@@ -31,20 +31,20 @@ namespace Diseño
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDatosNino = new System.Windows.Forms.Button();
+            this.btnCapacidadIntelectual = new System.Windows.Forms.Button();
             this.btnInformacion = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnCapacidadIntelectual = new System.Windows.Forms.Button();
             this._p1 = new System.Windows.Forms.Panel();
-            this.btnDatosNino = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(199)))), ((int)(((byte)(186)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(142)))), ((int)(((byte)(255)))));
             this.panel1.Controls.Add(this.btnDatosNino);
             this.panel1.Controls.Add(this.btnCapacidadIntelectual);
             this.panel1.Controls.Add(this.btnInformacion);
@@ -55,6 +55,34 @@ namespace Diseño
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(180, 621);
             this.panel1.TabIndex = 0;
+            // 
+            // btnDatosNino
+            // 
+            this.btnDatosNino.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDatosNino.FlatAppearance.BorderSize = 0;
+            this.btnDatosNino.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDatosNino.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDatosNino.Location = new System.Drawing.Point(0, 191);
+            this.btnDatosNino.Name = "btnDatosNino";
+            this.btnDatosNino.Size = new System.Drawing.Size(180, 38);
+            this.btnDatosNino.TabIndex = 4;
+            this.btnDatosNino.Text = "Datos del niño";
+            this.btnDatosNino.UseVisualStyleBackColor = true;
+            this.btnDatosNino.Click += new System.EventHandler(this.BtnDatosNino_Click);
+            // 
+            // btnCapacidadIntelectual
+            // 
+            this.btnCapacidadIntelectual.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCapacidadIntelectual.FlatAppearance.BorderSize = 0;
+            this.btnCapacidadIntelectual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCapacidadIntelectual.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCapacidadIntelectual.Location = new System.Drawing.Point(0, 153);
+            this.btnCapacidadIntelectual.Name = "btnCapacidadIntelectual";
+            this.btnCapacidadIntelectual.Size = new System.Drawing.Size(180, 38);
+            this.btnCapacidadIntelectual.TabIndex = 3;
+            this.btnCapacidadIntelectual.Text = "Capacidad Intelecual";
+            this.btnCapacidadIntelectual.UseVisualStyleBackColor = true;
+            this.btnCapacidadIntelectual.Click += new System.EventHandler(this.BtnCapacidadIntelectual_Click);
             // 
             // btnInformacion
             // 
@@ -91,7 +119,7 @@ namespace Diseño
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(199)))), ((int)(((byte)(186)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(142)))), ((int)(((byte)(255)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(180, 0);
             this.panel2.Name = "panel2";
@@ -99,41 +127,14 @@ namespace Diseño
             this.panel2.TabIndex = 1;
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
             // 
-            // btnCapacidadIntelectual
-            // 
-            this.btnCapacidadIntelectual.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCapacidadIntelectual.FlatAppearance.BorderSize = 0;
-            this.btnCapacidadIntelectual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCapacidadIntelectual.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCapacidadIntelectual.Location = new System.Drawing.Point(0, 153);
-            this.btnCapacidadIntelectual.Name = "btnCapacidadIntelectual";
-            this.btnCapacidadIntelectual.Size = new System.Drawing.Size(180, 38);
-            this.btnCapacidadIntelectual.TabIndex = 3;
-            this.btnCapacidadIntelectual.Text = "Capacidad Intelecual";
-            this.btnCapacidadIntelectual.UseVisualStyleBackColor = true;
-            this.btnCapacidadIntelectual.Click += new System.EventHandler(this.BtnCapacidadIntelectual_Click);
-            // 
             // _p1
             // 
+            this._p1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(179)))), ((int)(((byte)(255)))));
             this._p1.Dock = System.Windows.Forms.DockStyle.Fill;
             this._p1.Location = new System.Drawing.Point(180, 59);
             this._p1.Name = "_p1";
             this._p1.Size = new System.Drawing.Size(789, 562);
             this._p1.TabIndex = 2;
-            // 
-            // btnDatosNino
-            // 
-            this.btnDatosNino.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDatosNino.FlatAppearance.BorderSize = 0;
-            this.btnDatosNino.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDatosNino.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDatosNino.Location = new System.Drawing.Point(0, 191);
-            this.btnDatosNino.Name = "btnDatosNino";
-            this.btnDatosNino.Size = new System.Drawing.Size(180, 38);
-            this.btnDatosNino.TabIndex = 4;
-            this.btnDatosNino.Text = "Datos del niño";
-            this.btnDatosNino.UseVisualStyleBackColor = true;
-            this.btnDatosNino.Click += new System.EventHandler(this.BtnDatosNino_Click);
             // 
             // Form1
             // 

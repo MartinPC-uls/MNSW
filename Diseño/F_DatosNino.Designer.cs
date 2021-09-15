@@ -32,15 +32,19 @@ namespace Diseño
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F_DatosNino));
             this.fotoNino = new System.Windows.Forms.PictureBox();
             this.panelNombre = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.panelEdad = new System.Windows.Forms.Panel();
+            this.lblEdad = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.fotoNino)).BeginInit();
             this.panelNombre.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.panelEdad.SuspendLayout();
             this.SuspendLayout();
             // 
             // fotoNino
@@ -56,24 +60,24 @@ namespace Diseño
             // 
             // panelNombre
             // 
-            this.panelNombre.Controls.Add(this.label1);
+            this.panelNombre.Controls.Add(this.lblNombre);
             this.panelNombre.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelNombre.Location = new System.Drawing.Point(0, 78);
             this.panelNombre.Name = "panelNombre";
             this.panelNombre.Size = new System.Drawing.Size(757, 40);
             this.panelNombre.TabIndex = 2;
             // 
-            // label1
+            // lblNombre
             // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(757, 33);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Martín Arturo Pizarro Contreras";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblNombre.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblNombre.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.Location = new System.Drawing.Point(0, 0);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblNombre.Size = new System.Drawing.Size(757, 33);
+            this.lblNombre.TabIndex = 0;
+            this.lblNombre.Text = "Martín Arturo Pizarro Contreras";
+            this.lblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
@@ -95,26 +99,58 @@ namespace Diseño
             this.label2.TabIndex = 0;
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // panelEdad
+            // 
+            this.panelEdad.Controls.Add(this.lblEdad);
+            this.panelEdad.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelEdad.Location = new System.Drawing.Point(0, 158);
+            this.panelEdad.Name = "panelEdad";
+            this.panelEdad.Size = new System.Drawing.Size(757, 40);
+            this.panelEdad.TabIndex = 4;
+            // 
+            // lblEdad
+            // 
+            this.lblEdad.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblEdad.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEdad.Location = new System.Drawing.Point(0, 0);
+            this.lblEdad.Name = "lblEdad";
+            this.lblEdad.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblEdad.Size = new System.Drawing.Size(757, 33);
+            this.lblEdad.TabIndex = 0;
+            this.lblEdad.Text = "20 Años";
+            this.lblEdad.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel3
+            // 
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 198);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(757, 38);
+            this.panel3.TabIndex = 5;
+            // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 158);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 236);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(757, 40);
-            this.panel2.TabIndex = 4;
+            this.panel2.Size = new System.Drawing.Size(132, 248);
+            this.panel2.TabIndex = 6;
             // 
-            // label3
+            // panel4
             // 
-            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(0, 0);
-            this.label3.Name = "label3";
-            this.label3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label3.Size = new System.Drawing.Size(757, 33);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Martín Arturo Pizarro Contreras";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel4.Location = new System.Drawing.Point(625, 236);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(132, 248);
+            this.panel4.TabIndex = 7;
+            // 
+            // panel5
+            // 
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(132, 236);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(493, 248);
+            this.panel5.TabIndex = 8;
             // 
             // F_DatosNino
             // 
@@ -122,7 +158,11 @@ namespace Diseño
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(236)))), ((int)(((byte)(232)))));
             this.ClientSize = new System.Drawing.Size(757, 484);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panelEdad);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelNombre);
             this.Controls.Add(this.fotoNino);
@@ -132,7 +172,7 @@ namespace Diseño
             ((System.ComponentModel.ISupportInitialize)(this.fotoNino)).EndInit();
             this.panelNombre.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.panelEdad.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -141,10 +181,14 @@ namespace Diseño
 
         private System.Windows.Forms.PictureBox fotoNino;
         private System.Windows.Forms.Panel panelNombre;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panelEdad;
+        private System.Windows.Forms.Label lblEdad;
+        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
     }
 }

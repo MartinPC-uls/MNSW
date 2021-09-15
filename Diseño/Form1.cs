@@ -80,7 +80,7 @@ namespace Diseño
         protected override void OnPaintBackground(PaintEventArgs e)
         {
             using (var brush = new LinearGradientBrush(this.ClientRectangle,
-                       TopColor, BottomColor, LinearGradientMode.Vertical))
+                       TopColor, BottomColor, LinearGradientMode.ForwardDiagonal))
             {
                 e.Graphics.FillRectangle(brush, this.ClientRectangle);
             }
