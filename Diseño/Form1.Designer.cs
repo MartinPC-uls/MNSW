@@ -80,7 +80,7 @@ namespace Diseño
             this.btnCapacidadIntelectual.Name = "btnCapacidadIntelectual";
             this.btnCapacidadIntelectual.Size = new System.Drawing.Size(180, 38);
             this.btnCapacidadIntelectual.TabIndex = 3;
-            this.btnCapacidadIntelectual.Text = "Capacidad Intelecual";
+            this.btnCapacidadIntelectual.Text = "Capacidad Intelecuals";
             this.btnCapacidadIntelectual.UseVisualStyleBackColor = true;
             this.btnCapacidadIntelectual.Click += new System.EventHandler(this.BtnCapacidadIntelectual_Click);
             // 
