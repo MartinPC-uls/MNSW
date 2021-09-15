@@ -66,7 +66,7 @@ namespace Diseño
             this.btnDatosNino.Name = "btnDatosNino";
             this.btnDatosNino.Size = new System.Drawing.Size(180, 38);
             this.btnDatosNino.TabIndex = 4;
-            this.btnDatosNino.Text = "Leyton culiao";
+            this.btnDatosNino.Text = "sdsdsds";
             this.btnDatosNino.UseVisualStyleBackColor = true;
             this.btnDatosNino.Click += new System.EventHandler(this.BtnDatosNino_Click);
             // 
