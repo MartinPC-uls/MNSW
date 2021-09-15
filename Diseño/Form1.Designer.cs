@@ -44,7 +44,7 @@ namespace Diseño
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(142)))), ((int)(((byte)(255)))));
+            this.panel1.BackColor = System.Drawing.Color.Red;
             this.panel1.Controls.Add(this.btnDatosNino);
             this.panel1.Controls.Add(this.btnCapacidadIntelectual);
             this.panel1.Controls.Add(this.btnInformacion);
