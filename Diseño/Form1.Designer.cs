@@ -31,6 +31,7 @@ namespace Diseño
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.btnDatosNino = new System.Windows.Forms.Button();
             this.btnCapacidadIntelectual = new System.Windows.Forms.Button();
             this.btnInformacion = new System.Windows.Forms.Button();
@@ -38,13 +39,17 @@ namespace Diseño
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this._p1 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this._p1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Silver;
+            this.panel1.Controls.Add(this.btnSalir);
             this.panel1.Controls.Add(this.btnDatosNino);
             this.panel1.Controls.Add(this.btnCapacidadIntelectual);
             this.panel1.Controls.Add(this.btnInformacion);
@@ -55,6 +60,20 @@ namespace Diseño
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(180, 621);
             this.panel1.TabIndex = 0;
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.BackColor = System.Drawing.Color.IndianRed;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnSalir.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnSalir.Location = new System.Drawing.Point(0, 583);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(180, 38);
+            this.btnSalir.TabIndex = 5;
+            this.btnSalir.Text = "Salir al Escritorio";
+            this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnDatosNino
             // 
@@ -130,11 +149,23 @@ namespace Diseño
             // _p1
             // 
             this._p1.BackColor = System.Drawing.Color.White;
+            this._p1.Controls.Add(this.pictureBox2);
             this._p1.Dock = System.Windows.Forms.DockStyle.Fill;
             this._p1.Location = new System.Drawing.Point(180, 59);
             this._p1.Name = "_p1";
             this._p1.Size = new System.Drawing.Size(789, 562);
             this._p1.TabIndex = 2;
+            this._p1.Paint += new System.Windows.Forms.PaintEventHandler(this._p1_Paint);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Diseño.Properties.Resources.sindrome_down_2_1100x408;
+            this.pictureBox2.Location = new System.Drawing.Point(-2, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(791, 185);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
             // 
             // Form1
             // 
@@ -150,6 +181,8 @@ namespace Diseño
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this._p1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -164,6 +197,8 @@ namespace Diseño
         private System.Windows.Forms.Button btnCapacidadIntelectual;
         private System.Windows.Forms.Panel _p1;
         private System.Windows.Forms.Button btnDatosNino;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 
