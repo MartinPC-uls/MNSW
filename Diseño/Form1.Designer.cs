@@ -44,7 +44,7 @@ namespace Diseño
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(242)))), ((int)(((byte)(247)))));
+            this.panel1.BackColor = System.Drawing.Color.Silver;
             this.panel1.Controls.Add(this.btnDatosNino);
             this.panel1.Controls.Add(this.btnCapacidadIntelectual);
             this.panel1.Controls.Add(this.btnInformacion);
@@ -61,7 +61,7 @@ namespace Diseño
             this.btnDatosNino.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnDatosNino.FlatAppearance.BorderSize = 0;
             this.btnDatosNino.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDatosNino.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDatosNino.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDatosNino.Location = new System.Drawing.Point(0, 191);
             this.btnDatosNino.Name = "btnDatosNino";
             this.btnDatosNino.Size = new System.Drawing.Size(180, 38);
@@ -75,7 +75,7 @@ namespace Diseño
             this.btnCapacidadIntelectual.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCapacidadIntelectual.FlatAppearance.BorderSize = 0;
             this.btnCapacidadIntelectual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCapacidadIntelectual.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCapacidadIntelectual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCapacidadIntelectual.Location = new System.Drawing.Point(0, 153);
             this.btnCapacidadIntelectual.Name = "btnCapacidadIntelectual";
             this.btnCapacidadIntelectual.Size = new System.Drawing.Size(180, 38);
@@ -89,7 +89,7 @@ namespace Diseño
             this.btnInformacion.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnInformacion.FlatAppearance.BorderSize = 0;
             this.btnInformacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInformacion.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInformacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInformacion.Location = new System.Drawing.Point(0, 115);
             this.btnInformacion.Name = "btnInformacion";
             this.btnInformacion.Size = new System.Drawing.Size(180, 38);
@@ -119,7 +119,7 @@ namespace Diseño
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(242)))), ((int)(((byte)(247)))));
+            this.panel2.BackColor = System.Drawing.Color.Silver;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(180, 0);
             this.panel2.Name = "panel2";
