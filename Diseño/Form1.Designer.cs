@@ -44,7 +44,7 @@ namespace Diseño
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Gray;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(242)))), ((int)(((byte)(247)))));
             this.panel1.Controls.Add(this.btnDatosNino);
             this.panel1.Controls.Add(this.btnCapacidadIntelectual);
             this.panel1.Controls.Add(this.btnInformacion);
@@ -119,7 +119,7 @@ namespace Diseño
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.Gray;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(242)))), ((int)(((byte)(247)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(180, 0);
             this.panel2.Name = "panel2";
@@ -129,7 +129,7 @@ namespace Diseño
             // 
             // _p1
             // 
-            this._p1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(179)))), ((int)(((byte)(255)))));
+            this._p1.BackColor = System.Drawing.Color.White;
             this._p1.Dock = System.Windows.Forms.DockStyle.Fill;
             this._p1.Location = new System.Drawing.Point(180, 59);
             this._p1.Name = "_p1";
