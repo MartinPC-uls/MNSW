@@ -26,6 +26,7 @@ namespace Diseño
         public Form1()
         {
             InitializeComponent();
+            openChildForm(new PanelBienvenida());
         }
 
         private void BtnInformacion_Click(object sender, EventArgs e)
@@ -55,8 +56,8 @@ namespace Diseño
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
-            _p1.Controls.Add(childForm);
-            _p1.Tag = childForm;
+            panelPrincipal.Controls.Add(childForm);
+            panelPrincipal.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
         }
@@ -71,10 +72,25 @@ namespace Diseño
             //this.Close();
             Application.Exit();
         }
+        
+        private void lblBenvenido()
+        {
+            this.BackColor = System.Drawing.Color.Transparent;
+        }
 
         private void _p1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void lblBienvenido_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            openChildForm(new PanelBienvenida());
         }
     }
 
