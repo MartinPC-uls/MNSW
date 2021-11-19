@@ -15,6 +15,13 @@ namespace Diseño
         public PanelBienvenida()
         {
             InitializeComponent();
+            bienvenido.Parent = foto;
+            bienvenido.BackColor = Color.Transparent;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

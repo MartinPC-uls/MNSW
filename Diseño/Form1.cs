@@ -92,6 +92,11 @@ namespace Diseño
         {
             openChildForm(new PanelBienvenida());
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 
     public class GradientPanel : Panel

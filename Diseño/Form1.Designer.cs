@@ -38,16 +38,12 @@ namespace Diseño
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            //this._p1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.panelPrincipal = new System.Windows.Forms.Panel();
             this.gradientPanel1 = new Diseño.GradientPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            //this._p1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panelPrincipal = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -85,7 +81,7 @@ namespace Diseño
             this.btnDatosNino.FlatAppearance.BorderSize = 0;
             this.btnDatosNino.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDatosNino.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDatosNino.Location = new System.Drawing.Point(0, 179);
+            this.btnDatosNino.Location = new System.Drawing.Point(0, 217);
             this.btnDatosNino.Name = "btnDatosNino";
             this.btnDatosNino.Size = new System.Drawing.Size(180, 38);
             this.btnDatosNino.TabIndex = 4;
@@ -99,7 +95,7 @@ namespace Diseño
             this.btnCapacidadIntelectual.FlatAppearance.BorderSize = 0;
             this.btnCapacidadIntelectual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCapacidadIntelectual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCapacidadIntelectual.Location = new System.Drawing.Point(0, 141);
+            this.btnCapacidadIntelectual.Location = new System.Drawing.Point(0, 179);
             this.btnCapacidadIntelectual.Name = "btnCapacidadIntelectual";
             this.btnCapacidadIntelectual.Size = new System.Drawing.Size(180, 38);
             this.btnCapacidadIntelectual.TabIndex = 3;
@@ -113,7 +109,7 @@ namespace Diseño
             this.btnInformacion.FlatAppearance.BorderSize = 0;
             this.btnInformacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInformacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInformacion.Location = new System.Drawing.Point(0, 103);
+            this.btnInformacion.Location = new System.Drawing.Point(0, 141);
             this.btnInformacion.Name = "btnInformacion";
             this.btnInformacion.Size = new System.Drawing.Size(180, 38);
             this.btnInformacion.TabIndex = 2;
@@ -124,7 +120,7 @@ namespace Diseño
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 65);
+            this.panel3.Location = new System.Drawing.Point(0, 103);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(180, 38);
             this.panel3.TabIndex = 1;
@@ -135,11 +131,7 @@ namespace Diseño
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(180, 77);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Size = new System.Drawing.Size(180, 65);
+            this.pictureBox1.Size = new System.Drawing.Size(180, 103);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -153,19 +145,8 @@ namespace Diseño
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(789, 59);
             this.panel2.TabIndex = 1;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
-            // 
-            // panelPrincipal
-            // 
-            /*this._p1.BackColor = System.Drawing.Color.White;
-            this._p1.Controls.Add(this.gradientPanel1);
-            this._p1.Controls.Add(this.pictureBox2);
-            this._p1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._p1.Location = new System.Drawing.Point(180, 59);
-            this._p1.Name = "_p1";
-            this._p1.Size = new System.Drawing.Size(789, 562);
-            this._p1.TabIndex = 2;
-            this._p1.Paint += new System.Windows.Forms.PaintEventHandler(this._p1_Paint);*/
             // 
             // pictureBox2
             // 
@@ -177,6 +158,16 @@ namespace Diseño
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
+            // panelPrincipal
+            // 
+            this.panelPrincipal.BackColor = System.Drawing.Color.White;
+            this.panelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPrincipal.Location = new System.Drawing.Point(180, 59);
+            this.panelPrincipal.Name = "panelPrincipal";
+            this.panelPrincipal.Size = new System.Drawing.Size(789, 562);
+            this.panelPrincipal.TabIndex = 2;
+            this.panelPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this._p1_Paint);
+            // 
             // gradientPanel1
             // 
             this.gradientPanel1.BottomColor = System.Drawing.Color.Empty;
@@ -185,13 +176,6 @@ namespace Diseño
             this.gradientPanel1.Size = new System.Drawing.Size(200, 100);
             this.gradientPanel1.TabIndex = 1;
             this.gradientPanel1.TopColor = System.Drawing.Color.Empty;
-            this.panelPrincipal.BackColor = System.Drawing.Color.White;
-            this.panelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelPrincipal.Location = new System.Drawing.Point(180, 59);
-            this.panelPrincipal.Name = "panelPrincipal";
-            this.panelPrincipal.Size = new System.Drawing.Size(789, 562);
-            this.panelPrincipal.TabIndex = 2;
-            this.panelPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this._p1_Paint);
             // 
             // Form1
             // 
@@ -207,7 +191,6 @@ namespace Diseño
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            //this._p1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 

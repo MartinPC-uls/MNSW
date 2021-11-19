@@ -143,5 +143,23 @@
   <ItemGroup>
     <None Include="Resources\Users-User-Male-4-icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\picturetopeople.org-8cd95857fac4df4761a941b211f5dd84ca8f0289bb475344fb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\person-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\human-brain-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\recomendation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\altura.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\test.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
