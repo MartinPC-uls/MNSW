@@ -34,14 +34,14 @@ namespace Diseño
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnLogin = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.barUser = new System.Windows.Forms.Panel();
-            this.barPassword = new System.Windows.Forms.Panel();
+            this.btnRegistro = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnRegistro = new System.Windows.Forms.Button();
+            this.barPassword = new System.Windows.Forms.Panel();
+            this.barUser = new System.Windows.Forms.Panel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnLogin = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -103,6 +103,63 @@ namespace Diseño
             this.panel4.Size = new System.Drawing.Size(282, 379);
             this.panel4.TabIndex = 4;
             // 
+            // btnRegistro
+            // 
+            this.btnRegistro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(133)))), ((int)(((byte)(192)))));
+            this.btnRegistro.FlatAppearance.BorderSize = 0;
+            this.btnRegistro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegistro.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistro.Location = new System.Drawing.Point(170, 330);
+            this.btnRegistro.Name = "btnRegistro";
+            this.btnRegistro.Size = new System.Drawing.Size(112, 49);
+            this.btnRegistro.TabIndex = 7;
+            this.btnRegistro.Text = "REGISTRARSE";
+            this.btnRegistro.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Diseño.Properties.Resources.Very_Basic_Lock_icon;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 217);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(19, 15);
+            this.pictureBox2.TabIndex = 6;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Diseño.Properties.Resources.Users_User_Male_4_icon;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 120);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(19, 17);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
+            // barPassword
+            // 
+            this.barPassword.BackColor = System.Drawing.Color.Red;
+            this.barPassword.Location = new System.Drawing.Point(1, 233);
+            this.barPassword.Name = "barPassword";
+            this.barPassword.Size = new System.Drawing.Size(281, 2);
+            this.barPassword.TabIndex = 4;
+            // 
+            // barUser
+            // 
+            this.barUser.BackColor = System.Drawing.Color.Red;
+            this.barUser.Location = new System.Drawing.Point(0, 138);
+            this.barUser.Name = "barUser";
+            this.barUser.Size = new System.Drawing.Size(281, 2);
+            this.barUser.TabIndex = 3;
+            // 
+            // textBox2
+            // 
+            this.textBox2.AutoCompleteCustomSource.AddRange(new string[] {
+            "martin.pizarro@userena.cl"});
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Location = new System.Drawing.Point(28, 214);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(254, 20);
+            this.textBox2.TabIndex = 2;
+            // 
             // textBox1
             // 
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -124,63 +181,7 @@ namespace Diseño
             this.btnLogin.TabIndex = 0;
             this.btnLogin.Text = "INICIAR SESIÓN";
             this.btnLogin.UseVisualStyleBackColor = false;
-            // 
-            // textBox2
-            // 
-            this.textBox2.AutoCompleteCustomSource.AddRange(new string[] {
-            "martin.pizarro@userena.cl"});
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Location = new System.Drawing.Point(28, 214);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(254, 20);
-            this.textBox2.TabIndex = 2;
-            // 
-            // barUser
-            // 
-            this.barUser.BackColor = System.Drawing.Color.Red;
-            this.barUser.Location = new System.Drawing.Point(0, 138);
-            this.barUser.Name = "barUser";
-            this.barUser.Size = new System.Drawing.Size(281, 2);
-            this.barUser.TabIndex = 3;
-            // 
-            // barPassword
-            // 
-            this.barPassword.BackColor = System.Drawing.Color.Red;
-            this.barPassword.Location = new System.Drawing.Point(1, 233);
-            this.barPassword.Name = "barPassword";
-            this.barPassword.Size = new System.Drawing.Size(281, 2);
-            this.barPassword.TabIndex = 4;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::Diseño.Properties.Resources.Very_Basic_Lock_icon;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 217);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(19, 15);
-            this.pictureBox2.TabIndex = 6;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Diseño.Properties.Resources.Users_User_Male_4_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 120);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(19, 17);
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnRegistro
-            // 
-            this.btnRegistro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(133)))), ((int)(((byte)(192)))));
-            this.btnRegistro.FlatAppearance.BorderSize = 0;
-            this.btnRegistro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegistro.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistro.Location = new System.Drawing.Point(170, 330);
-            this.btnRegistro.Name = "btnRegistro";
-            this.btnRegistro.Size = new System.Drawing.Size(112, 49);
-            this.btnRegistro.TabIndex = 7;
-            this.btnRegistro.Text = "REGISTRARSE";
-            this.btnRegistro.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // Form2
             // 
