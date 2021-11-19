@@ -38,19 +38,16 @@ namespace Diseño
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-<<<<<<< HEAD
-            this._p1 = new System.Windows.Forms.Panel();
+            //this._p1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.gradientPanel1 = new Diseño.GradientPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this._p1.SuspendLayout();
+            //this._p1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-=======
             this.panelPrincipal = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
->>>>>>> 1652203fb4a8b752db0cb97ca59258baf4eee62b
             this.SuspendLayout();
             // 
             // panel1
@@ -138,18 +135,15 @@ namespace Diseño
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-<<<<<<< HEAD
             this.pictureBox1.Size = new System.Drawing.Size(180, 77);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-=======
             this.pictureBox1.Size = new System.Drawing.Size(180, 65);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
->>>>>>> 1652203fb4a8b752db0cb97ca59258baf4eee62b
             // 
             // panel2
             // 
@@ -163,8 +157,7 @@ namespace Diseño
             // 
             // panelPrincipal
             // 
-<<<<<<< HEAD
-            this._p1.BackColor = System.Drawing.Color.White;
+            /*this._p1.BackColor = System.Drawing.Color.White;
             this._p1.Controls.Add(this.gradientPanel1);
             this._p1.Controls.Add(this.pictureBox2);
             this._p1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -172,7 +165,7 @@ namespace Diseño
             this._p1.Name = "_p1";
             this._p1.Size = new System.Drawing.Size(789, 562);
             this._p1.TabIndex = 2;
-            this._p1.Paint += new System.Windows.Forms.PaintEventHandler(this._p1_Paint);
+            this._p1.Paint += new System.Windows.Forms.PaintEventHandler(this._p1_Paint);*/
             // 
             // pictureBox2
             // 
@@ -192,7 +185,6 @@ namespace Diseño
             this.gradientPanel1.Size = new System.Drawing.Size(200, 100);
             this.gradientPanel1.TabIndex = 1;
             this.gradientPanel1.TopColor = System.Drawing.Color.Empty;
-=======
             this.panelPrincipal.BackColor = System.Drawing.Color.White;
             this.panelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPrincipal.Location = new System.Drawing.Point(180, 59);
@@ -200,7 +192,6 @@ namespace Diseño
             this.panelPrincipal.Size = new System.Drawing.Size(789, 562);
             this.panelPrincipal.TabIndex = 2;
             this.panelPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this._p1_Paint);
->>>>>>> 1652203fb4a8b752db0cb97ca59258baf4eee62b
             // 
             // Form1
             // 
@@ -216,11 +207,8 @@ namespace Diseño
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-<<<<<<< HEAD
-            this._p1.ResumeLayout(false);
+            //this._p1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-=======
->>>>>>> 1652203fb4a8b752db0cb97ca59258baf4eee62b
             this.ResumeLayout(false);
 
         }
@@ -236,11 +224,8 @@ namespace Diseño
         private System.Windows.Forms.Panel panelPrincipal;
         private System.Windows.Forms.Button btnDatosNino;
         private System.Windows.Forms.Button btnSalir;
-<<<<<<< HEAD
         private System.Windows.Forms.PictureBox pictureBox2;
         private GradientPanel gradientPanel1;
-=======
->>>>>>> 1652203fb4a8b752db0cb97ca59258baf4eee62b
     }
 }
 
