@@ -48,7 +48,7 @@ namespace Diseño
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Silver;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(222)))), ((int)(((byte)(161)))));
             this.panel1.Controls.Add(this.btnSalir);
             this.panel1.Controls.Add(this.btnDatosNino);
             this.panel1.Controls.Add(this.btnCapacidadIntelectual);
@@ -63,7 +63,7 @@ namespace Diseño
             // 
             // btnSalir
             // 
-            this.btnSalir.BackColor = System.Drawing.Color.IndianRed;
+            this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(76)))), ((int)(((byte)(69)))));
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnSalir.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -131,7 +131,11 @@ namespace Diseño
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
+<<<<<<< Updated upstream
             this.pictureBox1.Size = new System.Drawing.Size(180, 103);
+=======
+            this.pictureBox1.Size = new System.Drawing.Size(180, 65);
+>>>>>>> Stashed changes
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -139,7 +143,7 @@ namespace Diseño
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.Silver;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(222)))), ((int)(((byte)(161)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(180, 0);
             this.panel2.Name = "panel2";
@@ -159,6 +163,7 @@ namespace Diseño
             this.pictureBox2.TabStop = false;
             // 
             // panelPrincipal
+<<<<<<< Updated upstream
             // 
             this.panelPrincipal.BackColor = System.Drawing.Color.White;
             this.panelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -167,6 +172,25 @@ namespace Diseño
             this.panelPrincipal.Size = new System.Drawing.Size(789, 562);
             this.panelPrincipal.TabIndex = 2;
             this.panelPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this._p1_Paint);
+=======
+            // 
+            this.panelPrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.panelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPrincipal.Location = new System.Drawing.Point(180, 59);
+            this.panelPrincipal.Name = "panelPrincipal";
+            this.panelPrincipal.Size = new System.Drawing.Size(789, 562);
+            this.panelPrincipal.TabIndex = 2;
+            this.panelPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this._p1_Paint);
+            // 
+            // gradientPanel1
+            // 
+            this.gradientPanel1.BottomColor = System.Drawing.Color.Empty;
+            this.gradientPanel1.Location = new System.Drawing.Point(375, 111);
+            this.gradientPanel1.Name = "gradientPanel1";
+            this.gradientPanel1.Size = new System.Drawing.Size(200, 100);
+            this.gradientPanel1.TabIndex = 1;
+            this.gradientPanel1.TopColor = System.Drawing.Color.Empty;
+>>>>>>> Stashed changes
             // 
             // gradientPanel1
             // 
