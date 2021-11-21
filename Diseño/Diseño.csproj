@@ -76,11 +76,11 @@
     <Compile Include="F_Informacion.Designer.cs">
       <DependentUpon>F_Informacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="F_CapacidadIntelectual.cs">
+    <Compile Include="F_DatosFisicos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="F_CapacidadIntelectual.Designer.cs">
-      <DependentUpon>F_CapacidadIntelectual.cs</DependentUpon>
+    <Compile Include="F_DatosFisicos.Designer.cs">
+      <DependentUpon>F_DatosFisicos.cs</DependentUpon>
     </Compile>
     <Compile Include="PanelBienvenida.cs">
       <SubType>Form</SubType>
@@ -102,8 +102,8 @@
     <EmbeddedResource Include="F_Informacion.resx">
       <DependentUpon>F_Informacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="F_CapacidadIntelectual.resx">
-      <DependentUpon>F_CapacidadIntelectual.cs</DependentUpon>
+    <EmbeddedResource Include="F_DatosFisicos.resx">
+      <DependentUpon>F_DatosFisicos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PanelBienvenida.resx">
       <DependentUpon>PanelBienvenida.cs</DependentUpon>
@@ -166,6 +166,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\test.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notification.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

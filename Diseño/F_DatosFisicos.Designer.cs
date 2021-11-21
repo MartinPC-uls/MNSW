@@ -1,7 +1,7 @@
 ﻿
 namespace Diseño
 {
-    partial class F_CapacidadIntelectual
+    partial class F_Datos
     {
         /// <summary>
         /// Required designer variable.
@@ -29,34 +29,21 @@ namespace Diseño
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(254, 235);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(163, 107);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "CAPACIDAD INTELECTUAL";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // F_CapacidadIntelectual
+            // F_Datos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(773, 523);
-            this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "F_CapacidadIntelectual";
+            this.Name = "F_Datos";
             this.Text = "Form3";
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
     }
 }

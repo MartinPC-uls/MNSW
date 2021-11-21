@@ -45,7 +45,7 @@ namespace Diseño
 
         private void BtnCapacidadIntelectual_Click(object sender, EventArgs e)
         {
-            openChildForm(new F_CapacidadIntelectual());
+            openChildForm(new F_Datos());
         }
         private Form activeForm = null;
         private void openChildForm(Form childForm)

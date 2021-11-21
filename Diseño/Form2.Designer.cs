@@ -29,10 +29,13 @@ namespace Diseño
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.healthIcon_green = new System.Windows.Forms.PictureBox();
+            this.healthIcon_red = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnRegistro = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -42,7 +45,11 @@ namespace Diseño
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
+            this.errorMessage = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.healthIcon_green)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.healthIcon_red)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -50,12 +57,12 @@ namespace Diseño
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(73)))), ((int)(((byte)(161)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(127)))), ((int)(((byte)(123)))));
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(493, 164);
+            this.panel1.Size = new System.Drawing.Size(746, 164);
             this.panel1.TabIndex = 1;
             // 
             // label1
@@ -63,7 +70,7 @@ namespace Diseño
             this.label1.Font = new System.Drawing.Font("Roboto Light", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 83);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(490, 81);
+            this.label1.Size = new System.Drawing.Size(746, 81);
             this.label1.TabIndex = 0;
             this.label1.Text = "INICIO DE SESIÓN";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -80,15 +87,36 @@ namespace Diseño
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(387, 164);
+            this.panel3.Controls.Add(this.healthIcon_green);
+            this.panel3.Controls.Add(this.healthIcon_red);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(106, 164);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(106, 379);
+            this.panel3.Size = new System.Drawing.Size(640, 379);
             this.panel3.TabIndex = 3;
+            // 
+            // healthIcon_green
+            // 
+            this.healthIcon_green.Image = ((System.Drawing.Image)(resources.GetObject("healthIcon_green.Image")));
+            this.healthIcon_green.Location = new System.Drawing.Point(342, 70);
+            this.healthIcon_green.Name = "healthIcon_green";
+            this.healthIcon_green.Size = new System.Drawing.Size(267, 270);
+            this.healthIcon_green.TabIndex = 2;
+            this.healthIcon_green.TabStop = false;
+            // 
+            // healthIcon_red
+            // 
+            this.healthIcon_red.Image = global::Diseño.Properties.Resources.health;
+            this.healthIcon_red.Location = new System.Drawing.Point(342, 70);
+            this.healthIcon_red.Name = "healthIcon_red";
+            this.healthIcon_red.Size = new System.Drawing.Size(267, 270);
+            this.healthIcon_red.TabIndex = 1;
+            this.healthIcon_red.TabStop = false;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.errorMessage);
             this.panel4.Controls.Add(this.btnRegistro);
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Controls.Add(this.pictureBox1);
@@ -105,7 +133,7 @@ namespace Diseño
             // 
             // btnRegistro
             // 
-            this.btnRegistro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(133)))), ((int)(((byte)(192)))));
+            this.btnRegistro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(127)))), ((int)(((byte)(123)))));
             this.btnRegistro.FlatAppearance.BorderSize = 0;
             this.btnRegistro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegistro.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -156,15 +184,19 @@ namespace Diseño
             "martin.pizarro@userena.cl"});
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPassword.Location = new System.Drawing.Point(28, 214);
+            this.txtPassword.MaxLength = 60;
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(254, 20);
             this.txtPassword.TabIndex = 2;
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // txtUser
             // 
             this.txtUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUser.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUser.Location = new System.Drawing.Point(28, 120);
+            this.txtUser.MaxLength = 60;
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(254, 20);
             this.txtUser.TabIndex = 1;
@@ -172,7 +204,7 @@ namespace Diseño
             // 
             // btnLogin
             // 
-            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(133)))), ((int)(((byte)(192)))));
+            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(127)))), ((int)(((byte)(123)))));
             this.btnLogin.FlatAppearance.BorderSize = 0;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -184,11 +216,21 @@ namespace Diseño
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
+            // errorMessage
+            // 
+            this.errorMessage.AutoSize = true;
+            this.errorMessage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.errorMessage.Location = new System.Drawing.Point(60, 259);
+            this.errorMessage.Name = "errorMessage";
+            this.errorMessage.Size = new System.Drawing.Size(52, 19);
+            this.errorMessage.TabIndex = 8;
+            this.errorMessage.Text = "label2";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(493, 543);
+            this.ClientSize = new System.Drawing.Size(746, 543);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -197,6 +239,9 @@ namespace Diseño
             this.Name = "Form2";
             this.Text = "Form2";
             this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.healthIcon_green)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.healthIcon_red)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -220,5 +265,8 @@ namespace Diseño
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnRegistro;
+        private System.Windows.Forms.PictureBox healthIcon_red;
+        private System.Windows.Forms.PictureBox healthIcon_green;
+        private System.Windows.Forms.Label errorMessage;
     }
 }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Diseño
 {
-    public partial class F_CapacidadIntelectual : Form
+    public partial class F_Datos : Form
     {
-        public F_CapacidadIntelectual()
+        public F_Datos()
         {
             InitializeComponent();
         }
