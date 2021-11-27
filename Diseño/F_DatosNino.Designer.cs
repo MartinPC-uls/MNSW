@@ -41,10 +41,13 @@ namespace Diseño
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.fotoNino)).BeginInit();
             this.panelNombre.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelEdad.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // fotoNino
@@ -115,7 +118,7 @@ namespace Diseño
             this.lblEdad.Location = new System.Drawing.Point(0, 0);
             this.lblEdad.Name = "lblEdad";
             this.lblEdad.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblEdad.Size = new System.Drawing.Size(757, 33);
+            this.lblEdad.Size = new System.Drawing.Size(757, 40);
             this.lblEdad.TabIndex = 0;
             this.lblEdad.Text = "20 Años";
             this.lblEdad.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -146,11 +149,34 @@ namespace Diseño
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.button1);
+            this.panel5.Controls.Add(this.label3);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(132, 236);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(493, 248);
             this.panel5.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label3.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(0, 0);
+            this.label3.Name = "label3";
+            this.label3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label3.Size = new System.Drawing.Size(493, 40);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "CI: 0";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(171, 100);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(151, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "VER REGISTRO";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // F_DatosNino
             // 
@@ -173,6 +199,7 @@ namespace Diseño
             this.panelNombre.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panelEdad.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -190,5 +217,7 @@ namespace Diseño
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label3;
     }
 }
