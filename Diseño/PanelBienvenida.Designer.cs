@@ -37,6 +37,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.foto = new System.Windows.Forms.PictureBox();
+            this.btnComenzar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -65,7 +66,7 @@
             this.bienvenido.ForeColor = System.Drawing.Color.White;
             this.bienvenido.Location = new System.Drawing.Point(221, 48);
             this.bienvenido.Name = "bienvenido";
-            this.bienvenido.Size = new System.Drawing.Size(361, 76);
+            this.bienvenido.Size = new System.Drawing.Size(362, 76);
             this.bienvenido.TabIndex = 4;
             this.bienvenido.Text = "Bienvenido";
             // 
@@ -139,12 +140,22 @@
             this.foto.TabIndex = 1;
             this.foto.TabStop = false;
             // 
+            // btnComenzar
+            // 
+            this.btnComenzar.Location = new System.Drawing.Point(223, 462);
+            this.btnComenzar.Name = "btnComenzar";
+            this.btnComenzar.Size = new System.Drawing.Size(349, 28);
+            this.btnComenzar.TabIndex = 11;
+            this.btnComenzar.Text = "COMENZAR";
+            this.btnComenzar.UseVisualStyleBackColor = true;
+            // 
             // PanelBienvenida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(801, 513);
+            this.Controls.Add(this.btnComenzar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -177,5 +188,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnComenzar;
     }
 }
