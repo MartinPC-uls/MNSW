@@ -1,7 +1,7 @@
 ﻿
 namespace Diseño
 {
-    partial class Form2
+    partial class F_InicioSesion
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace Diseño
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F_InicioSesion));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();

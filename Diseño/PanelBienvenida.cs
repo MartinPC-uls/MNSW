@@ -12,8 +12,10 @@ namespace Diseño
 {
     public partial class PanelBienvenida : Form
     {
-        public PanelBienvenida()
+        private F_MenuPrincipal menuPrincipal;
+        public PanelBienvenida(F_MenuPrincipal menuPrincipal)
         {
+            this.menuPrincipal = menuPrincipal;
             InitializeComponent();
             bienvenido.Parent = foto;
             bienvenido.BackColor = Color.Transparent;
@@ -22,6 +24,11 @@ namespace Diseño
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnComenzar_Click(object sender, EventArgs e)
+        {
+            Utils.changePanel(new R_Datos_Nino(this.menuPrincipal), menuPrincipal);
         }
     }
 }

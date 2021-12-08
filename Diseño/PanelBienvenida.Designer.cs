@@ -148,6 +148,7 @@
             this.btnComenzar.TabIndex = 11;
             this.btnComenzar.Text = "COMENZAR";
             this.btnComenzar.UseVisualStyleBackColor = true;
+            this.btnComenzar.Click += new System.EventHandler(this.btnComenzar_Click);
             // 
             // PanelBienvenida
             // 

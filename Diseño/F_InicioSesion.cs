@@ -5,12 +5,12 @@ using System.Drawing;
 
 namespace Diseño
 {
-    public partial class Form2 : Form
+    public partial class F_InicioSesion : Form
     {
 
         Consulta consulta = new Consulta();
 
-        public Form2()
+        public F_InicioSesion()
         {
             InitializeComponent();
         }
@@ -20,14 +20,15 @@ namespace Diseño
             if (consulta.comprobarUsuario(txtUser.Text, txtPassword.Text))
             {
                 this.Hide();
-                Form1 form1 = new Form1();
+                string user = txtUser.Text;
+                Utils.user = user;
+                F_MenuPrincipal form1 = new F_MenuPrincipal(user);
                 form1.ShowDialog();
             }
         }
 
         private void txtUser_TextChanged(object sender, EventArgs e)
         {
-
             if (txtUser.Text.Contains("@") && txtUser.Text.Contains(".com") || txtUser.Text.Contains(".cl"))
             {
                 barUser.BackColor = Color.Green;
@@ -42,7 +43,6 @@ namespace Diseño
                 healthIcon_green.Hide();
                 barUser.BackColor = Color.Red;
             }
-
         }
 
         private void txtPassword_TextChanged(object sender, EventArgs e)

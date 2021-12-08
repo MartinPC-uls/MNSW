@@ -1,7 +1,7 @@
 ﻿
 namespace Diseño
 {
-    partial class Form1
+    partial class F_MenuPrincipal
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -40,8 +40,8 @@ namespace Diseño
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panelPrincipal = new System.Windows.Forms.Panel();
-            this.gradientPanel1 = new Diseño.GradientPanel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.gradientPanel1 = new Diseño.GradientPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -75,8 +75,9 @@ namespace Diseño
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(180, 38);
             this.button1.TabIndex = 6;
-            this.button1.Text = "Salud";
+            this.button1.Text = "ENCUESTA";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnSalir
             // 
@@ -185,15 +186,6 @@ namespace Diseño
             this.panelPrincipal.TabIndex = 2;
             this.panelPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this._p1_Paint);
             // 
-            // gradientPanel1
-            // 
-            this.gradientPanel1.BottomColor = System.Drawing.Color.Empty;
-            this.gradientPanel1.Location = new System.Drawing.Point(375, 111);
-            this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(200, 100);
-            this.gradientPanel1.TabIndex = 1;
-            this.gradientPanel1.TopColor = System.Drawing.Color.Empty;
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Diseño.Properties.Resources.image__1_;
@@ -204,7 +196,16 @@ namespace Diseño
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
-            // Form1
+            // gradientPanel1
+            // 
+            this.gradientPanel1.BottomColor = System.Drawing.Color.Empty;
+            this.gradientPanel1.Location = new System.Drawing.Point(375, 111);
+            this.gradientPanel1.Name = "gradientPanel1";
+            this.gradientPanel1.Size = new System.Drawing.Size(200, 100);
+            this.gradientPanel1.TabIndex = 1;
+            this.gradientPanel1.TopColor = System.Drawing.Color.Empty;
+            // 
+            // F_MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -214,7 +215,7 @@ namespace Diseño
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "F_MenuPrincipal";
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -233,7 +234,7 @@ namespace Diseño
         private System.Windows.Forms.Button btnInformacion;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnCapacidadIntelectual;
-        private System.Windows.Forms.Panel panelPrincipal;
+        public System.Windows.Forms.Panel panelPrincipal;
         private System.Windows.Forms.Button btnDatosNino;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.PictureBox pictureBox2;

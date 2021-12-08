@@ -12,8 +12,10 @@ using System.Runtime.InteropServices;
 
 namespace Diseño
 {
-    public partial class Form1 : Form
+    public partial class F_MenuPrincipal : Form
     {
+
+        public string user;
 
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -23,10 +25,11 @@ namespace Diseño
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        public Form1()
+        public F_MenuPrincipal(string user)
         {
+            this.user = user;
             InitializeComponent();
-            openChildForm(new PanelBienvenida());
+            openChildForm(new PanelBienvenida(this));
         }
 
         private void BtnInformacion_Click(object sender, EventArgs e)
@@ -64,7 +67,7 @@ namespace Diseño
 
         private void BtnDatosNino_Click(object sender, EventArgs e)
         {
-            openChildForm(new F_DatosNino());
+            openChildForm(new F_DatosNino(this));
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -90,12 +93,17 @@ namespace Diseño
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            openChildForm(new PanelBienvenida());
+            openChildForm(new PanelBienvenida(this));
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            openChildForm(new F_Encuesta());
         }
     }
 

@@ -10,10 +10,12 @@ using System.Windows.Forms;
 
 namespace Diseño
 {
-    public partial class R_Informacion : Form
+    public partial class F_InfoBienvenida : Form
     {
-        public R_Informacion()
+        F_MenuPrincipal menuPrincipal;
+        public F_InfoBienvenida(F_MenuPrincipal menuPrincipal)
         {
+            this.menuPrincipal = menuPrincipal;
             InitializeComponent();
         }
     }

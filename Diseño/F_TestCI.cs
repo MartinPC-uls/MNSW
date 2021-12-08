@@ -15,6 +15,11 @@ namespace Diseño
         public F_TestCI()
         {
             InitializeComponent();
+            SetPregunta();
+        }
+        private void SetPregunta()
+        {
+            lblPregunta.Text = "";
         }
 
     }

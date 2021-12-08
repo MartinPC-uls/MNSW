@@ -23,12 +23,20 @@ namespace Diseño.Conexion
         public MySqlConnection getConnection()
         {
             cn = new MySqlConnection(connString);
-            cn.Open();
+            //cn.Open();
             return cn;
         }
         public void close()
         {
             cn.Close();
+        }
+        public void open()
+        {
+            cn.Open();
+        }
+        public MySqlCommand CreateCommand()
+        {
+            return cn.CreateCommand();
         }
     }
 }

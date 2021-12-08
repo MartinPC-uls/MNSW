@@ -11,9 +11,16 @@ namespace Diseño.Conexion
     {
         Connection cn = new Connection();
 
-        public bool comprobarUsuario(String usuario, String password)
+        public Consulta()
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM usuarios WHERE email = '" + usuario + "' AND password = '" + password + "'", cn.getConnection());
+            cn.getConnection();
+        }
+
+        public bool comprobarUsuario(string usuario, string password)
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "SELECT * FROM usuarios WHERE email = '" + usuario + "' AND password = '" + password + "'";
             MySqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read())
             {
@@ -22,6 +29,35 @@ namespace Diseño.Conexion
             }
             cn.close();
             return false;
+        }
+        public void addNino(string email, string nombre, int edad, int altura, int peso, string sexo, int ci = 0)
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "INSERT INTO nino_usuario(email, nombre, edad, altura, peso, sexo, ci)" +
+                " VALUES(@email, @nombre, @edad, @altura, @peso, @sexo, @ci)";
+            cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@nombre", nombre);
+            cmd.Parameters.AddWithValue("@edad", edad);
+            cmd.Parameters.AddWithValue("@altura", altura);
+            cmd.Parameters.AddWithValue("@peso", peso);
+            cmd.Parameters.AddWithValue("@sexo", sexo);
+            cmd.Parameters.AddWithValue("@ci", ci);
+            cmd.ExecuteNonQuery();
+            cn.close();
+        }
+        public List<string> addSintomas(List<string> sintomas)
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "SELECT sintoma FROM sintomas";
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                sintomas.Add(reader.GetString(0));
+            }
+            cn.close();
+            return sintomas;
         }
 
     }
