@@ -59,6 +59,43 @@ namespace Diseño.Conexion
             cn.close();
             return sintomas;
         }
+        public List<Pregunta> addPreguntas()
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "SELECT * FROM testci_1_preguntas";
+            MySqlDataReader reader = cmd.ExecuteReader();
+            List<Pregunta> preguntas = new List<Pregunta>();
+            while (reader.Read())
+            {
+                if (reader.GetString(1) == " ")
+                {
+                    preguntas.Add(new Pregunta(reader.GetInt16(0), reader.GetString(2), reader.GetString(3)));
+                }
+                else
+                {
+                    preguntas.Add(new Pregunta(reader.GetInt16(0), reader.GetString(2), reader.GetString(3), reader.GetString(1)));
+                }
+            }
+            cn.close();
+            return preguntas;
+        }
+        public List<Alternativas> addAlternativas()
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "SELECT * FROM testci_1_alternativas";
+            MySqlDataReader reader = cmd.ExecuteReader();
+            List<Alternativas> alternativas = new List<Alternativas>();
+            while (reader.Read())
+            {
+                alternativas.Add(new Alternativas(reader.GetInt16(0), reader.GetString(1), reader.GetString(2),
+                    reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6),
+                    reader.GetString(7), reader.GetString(8)));
+            }
+            cn.close();
+            return alternativas;
+        }
 
     }
 }

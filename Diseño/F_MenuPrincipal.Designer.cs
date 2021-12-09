@@ -41,7 +41,6 @@ namespace Diseño
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panelPrincipal = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.gradientPanel1 = new Diseño.GradientPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -75,7 +74,7 @@ namespace Diseño
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(180, 38);
             this.button1.TabIndex = 6;
-            this.button1.Text = "ENCUESTA";
+            this.button1.Text = "Consulte por síntomas";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -103,7 +102,7 @@ namespace Diseño
             this.btnDatosNino.Name = "btnDatosNino";
             this.btnDatosNino.Size = new System.Drawing.Size(180, 38);
             this.btnDatosNino.TabIndex = 4;
-            this.btnDatosNino.Text = "Datos Cognitivos";
+            this.btnDatosNino.Text = "Realize el test";
             this.btnDatosNino.UseVisualStyleBackColor = true;
             this.btnDatosNino.Click += new System.EventHandler(this.BtnDatosNino_Click);
             // 
@@ -117,7 +116,7 @@ namespace Diseño
             this.btnCapacidadIntelectual.Name = "btnCapacidadIntelectual";
             this.btnCapacidadIntelectual.Size = new System.Drawing.Size(180, 38);
             this.btnCapacidadIntelectual.TabIndex = 3;
-            this.btnCapacidadIntelectual.Text = "Datos Físicos";
+            this.btnCapacidadIntelectual.Text = "Datos del niño";
             this.btnCapacidadIntelectual.UseVisualStyleBackColor = true;
             this.btnCapacidadIntelectual.Click += new System.EventHandler(this.BtnCapacidadIntelectual_Click);
             // 
@@ -195,15 +194,6 @@ namespace Diseño
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
-            // 
-            // gradientPanel1
-            // 
-            this.gradientPanel1.BottomColor = System.Drawing.Color.Empty;
-            this.gradientPanel1.Location = new System.Drawing.Point(375, 111);
-            this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(200, 100);
-            this.gradientPanel1.TabIndex = 1;
-            this.gradientPanel1.TopColor = System.Drawing.Color.Empty;
             // 
             // F_MenuPrincipal
             // 

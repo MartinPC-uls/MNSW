@@ -147,6 +147,8 @@
     <Compile Include="ML\Data\AgeRange.cs" />
     <Compile Include="ML\Data\AgeRangePrediction.cs" />
     <Compile Include="ML\ML.cs" />
+    <Compile Include="Pregunta.cs" />
+    <Compile Include="Alternativas.cs" />
     <Compile Include="R_Datos_Nino.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -280,7 +282,23 @@
   <ItemGroup>
     <None Include="Resources\notification.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\es_1.jpg" />
+    <Content Include="Resources\es_10.jpg" />
+    <Content Include="Resources\es_11.jpg" />
+    <Content Include="Resources\es_12.jpg" />
+    <Content Include="Resources\es_2.jpg" />
+    <Content Include="Resources\es_3.jpg" />
+    <Content Include="Resources\es_4.jpg" />
+    <Content Include="Resources\es_5.jpg" />
+    <Content Include="Resources\es_6.jpg" />
+    <Content Include="Resources\es_7.jpg" />
+    <Content Include="Resources\es_8.jpg" />
+    <Content Include="Resources\es_9.jpg" />
+    <Content Include="Resources\lm_1.jpg" />
+    <Content Include="Resources\lm_12.jpg" />
+    <Content Include="Resources\lm_8.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
