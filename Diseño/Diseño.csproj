@@ -149,6 +149,7 @@
     <Compile Include="ML\ML.cs" />
     <Compile Include="Pregunta.cs" />
     <Compile Include="Alternativas.cs" />
+    <Compile Include="RespuestasCorrectas.cs" />
     <Compile Include="R_Datos_Nino.cs">
       <SubType>Form</SubType>
     </Compile>

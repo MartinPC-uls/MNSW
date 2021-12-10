@@ -141,5 +141,108 @@ namespace Diseño
                 SetAlternativas(this.id + 1);
             }
         }
+        private void revisarTest()
+        {
+            if (a.Checked || b.Checked || c.Checked || d.Checked || e.Checked || f.Checked || g.Checked || h.Checked)
+            {
+                alternativas[this.id].seleccionada = gbAlternativas.Controls.
+                    OfType<RadioButton>().FirstOrDefault(r => r.Checked).Name;
+            }
+
+            List<RespuestasCorrectas> respuestasCorrectas = consulta.addRespuestasCorrectas();
+            int puntaje_lm = 0;
+            int puntaje_es = 0;
+            int puntaje_em = 0;
+            int i = 0;
+            foreach (Alternativas _alternativas in this.alternativas)
+            {
+                if (preguntas[i].tipo == "LM")
+                {
+                    if (_alternativas.seleccionada == respuestasCorrectas[i].respuestaCorrecta)
+                    {
+                        puntaje_lm++;
+                    }
+                } else if (preguntas[i].tipo == "ES")
+                {
+                    if (_alternativas.seleccionada == respuestasCorrectas[i].respuestaCorrecta)
+                    {
+                        puntaje_es++;
+                    }
+                } else if (preguntas[i].tipo == "EM")
+                {
+                    if (_alternativas.seleccionada == respuestasCorrectas[i].respuestaCorrecta)
+                    {
+                        puntaje_em++;
+                    }
+                }
+                i++;
+            }
+
+            double _puntaje_lm = ((double)puntaje_lm / (double)getNumPreguntas_LM())*100;
+            double _puntaje_es = ((double)puntaje_es / (double)getNumPreguntas_ES())*100;
+            double _puntaje_em = ((double)puntaje_em / (double)getNumPreguntas_EM())*100;
+
+            consulta.registrarPuntajesNino(Utils.user, (int)_puntaje_lm, (int)_puntaje_es, (int)_puntaje_em);
+
+            salidaRecomendacion((int)_puntaje_lm, (int)_puntaje_es, (int)_puntaje_em);
+        }
+
+        private void btnTerminar_Click(object sender, EventArgs e)
+        {
+            revisarTest();
+        }
+        private int getNumPreguntas_LM()
+        {
+            int num = 0;
+            foreach (Pregunta pregunta in this.preguntas)
+            {
+                if (pregunta.tipo == "LM") num++;
+            }
+            return num;
+        }
+        private int getNumPreguntas_ES()
+        {
+            int num = 0;
+            foreach (Pregunta pregunta in this.preguntas)
+            {
+                if (pregunta.tipo == "ES") num++;
+            }
+            return num;
+        }
+        private int getNumPreguntas_EM()
+        {
+            int num = 0;
+            foreach (Pregunta pregunta in this.preguntas)
+            {
+                if (pregunta.tipo == "EM") num++;
+            }
+            return num;
+        }
+        private void salidaRecomendacion(int ptj_lm, int ptj_es, int ptj_em)
+        {
+            string recomendacion_lm = "";
+            string recomendacion_es = "";
+            string recomendacion_em = "";
+            if (ptj_lm < 20)
+            {
+                recomendacion_lm = "Haga ejercicios de cálculo mental (contar, agrupar cosas) con el niño, de esta manera" +
+                    " podrá mejorar su inteligencia lógico-matemática.";
+            } else if (ptj_lm >= 20 && ptj_lm < 50)
+            {
+                recomendacion_lm = "";
+            } else if (ptj_lm >= 50 && ptj_lm < 75)
+            {
+                recomendacion_lm = "";
+            } else if (ptj_lm >= 75 && ptj_lm < 100)
+            {
+                recomendacion_lm = "";
+            }
+
+            // agregar recomendaciones lm
+            // agregar las otras recomendaciones: es y em.
+
+            // mostrar las recomendaciones (serán 3) en una ventana desplegable del ícono de notificaciones
+            // del menú principal (también hay que trabajar este menú).
+        }
     }
 }

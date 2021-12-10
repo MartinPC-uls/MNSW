@@ -30,6 +30,7 @@ namespace Diseño
         private void InitializeComponent()
         {
             this.panel_control = new System.Windows.Forms.Panel();
+            this.btnAnterior = new System.Windows.Forms.Button();
             this.btnSiguiente = new System.Windows.Forms.Button();
             this.lblPreguntasRespondidas = new System.Windows.Forms.Label();
             this.lblPreguntas = new System.Windows.Forms.Label();
@@ -46,7 +47,7 @@ namespace Diseño
             this.c = new System.Windows.Forms.RadioButton();
             this.b = new System.Windows.Forms.RadioButton();
             this.a = new System.Windows.Forms.RadioButton();
-            this.btnAnterior = new System.Windows.Forms.Button();
+            this.btnTerminar = new System.Windows.Forms.Button();
             this.panel_control.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
@@ -55,6 +56,7 @@ namespace Diseño
             // 
             // panel_control
             // 
+            this.panel_control.Controls.Add(this.btnTerminar);
             this.panel_control.Controls.Add(this.btnAnterior);
             this.panel_control.Controls.Add(this.btnSiguiente);
             this.panel_control.Controls.Add(this.lblPreguntasRespondidas);
@@ -64,6 +66,16 @@ namespace Diseño
             this.panel_control.Name = "panel_control";
             this.panel_control.Size = new System.Drawing.Size(773, 132);
             this.panel_control.TabIndex = 0;
+            // 
+            // btnAnterior
+            // 
+            this.btnAnterior.Location = new System.Drawing.Point(181, 103);
+            this.btnAnterior.Name = "btnAnterior";
+            this.btnAnterior.Size = new System.Drawing.Size(75, 23);
+            this.btnAnterior.TabIndex = 4;
+            this.btnAnterior.Text = "Anterior";
+            this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
             // 
             // btnSiguiente
             // 
@@ -227,15 +239,15 @@ namespace Diseño
             this.a.Text = "a";
             this.a.UseVisualStyleBackColor = true;
             // 
-            // btnAnterior
+            // btnTerminar
             // 
-            this.btnAnterior.Location = new System.Drawing.Point(181, 103);
-            this.btnAnterior.Name = "btnAnterior";
-            this.btnAnterior.Size = new System.Drawing.Size(75, 23);
-            this.btnAnterior.TabIndex = 4;
-            this.btnAnterior.Text = "Anterior";
-            this.btnAnterior.UseVisualStyleBackColor = true;
-            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            this.btnTerminar.Location = new System.Drawing.Point(336, 29);
+            this.btnTerminar.Name = "btnTerminar";
+            this.btnTerminar.Size = new System.Drawing.Size(82, 23);
+            this.btnTerminar.TabIndex = 5;
+            this.btnTerminar.Text = "Terminar";
+            this.btnTerminar.UseVisualStyleBackColor = true;
+            this.btnTerminar.Click += new System.EventHandler(this.btnTerminar_Click);
             // 
             // F_TestCI
             // 
@@ -277,5 +289,6 @@ namespace Diseño
         private System.Windows.Forms.RadioButton b;
         private System.Windows.Forms.RadioButton a;
         private System.Windows.Forms.Button btnAnterior;
+        private System.Windows.Forms.Button btnTerminar;
     }
 }

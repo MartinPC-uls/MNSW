@@ -96,6 +96,33 @@ namespace Diseño.Conexion
             cn.close();
             return alternativas;
         }
+        public List<RespuestasCorrectas> addRespuestasCorrectas()
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "SELECT * FROM testci_1_respuesta";
+            MySqlDataReader reader = cmd.ExecuteReader();
+            List<RespuestasCorrectas> respuestasCorrectas = new List<RespuestasCorrectas>();
+            while (reader.Read())
+            {
+                respuestasCorrectas.Add(new RespuestasCorrectas(reader.GetInt16(0), reader.GetString(1)));
+            }
+            cn.close();
+            return respuestasCorrectas;
+        }
+        public void registrarPuntajesNino(string email, int ptj_lm, int ptj_es, int ptj_em)
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "INSERT INTO ninos_puntajes(email, lm, es, em)" +
+                " VALUES(@email, @lm, @es, @em)";
+            cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@lm", ptj_lm);
+            cmd.Parameters.AddWithValue("@es", ptj_es);
+            cmd.Parameters.AddWithValue("@em", ptj_em);
+            cmd.ExecuteNonQuery();
+            cn.close();
+        }
 
     }
 }
