@@ -1,7 +1,7 @@
 ﻿
 namespace Diseño
 {
-    partial class F_Encuesta
+    partial class F_Consulta
     {
         /// <summary>
         /// Required designer variable.
@@ -40,6 +40,8 @@ namespace Diseño
             this.cbSintoma3 = new System.Windows.Forms.ComboBox();
             this.cbSintoma4 = new System.Windows.Forms.ComboBox();
             this.btnConsultar = new System.Windows.Forms.Button();
+            this.btnReiniciar = new System.Windows.Forms.Button();
+            this.lblRecomendacion = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -107,7 +109,7 @@ namespace Diseño
             this.cbSintoma1.Name = "cbSintoma1";
             this.cbSintoma1.Size = new System.Drawing.Size(121, 21);
             this.cbSintoma1.TabIndex = 6;
-            this.cbSintoma1.SelectionChangeCommitted += new System.EventHandler(this.comboBox1_SelectionChangeCommitted);
+            this.cbSintoma1.SelectedIndexChanged += new System.EventHandler(this.cbSintoma1_SelectedIndexChanged);
             // 
             // cbSintoma2
             // 
@@ -117,7 +119,7 @@ namespace Diseño
             this.cbSintoma2.Size = new System.Drawing.Size(121, 21);
             this.cbSintoma2.TabIndex = 7;
             this.cbSintoma2.Visible = false;
-            this.cbSintoma2.SelectionChangeCommitted += new System.EventHandler(this.cbSintoma2_SelectionChangeCommitted);
+            this.cbSintoma2.SelectedIndexChanged += new System.EventHandler(this.cbSintoma2_SelectedIndexChanged);
             // 
             // cbSintoma3
             // 
@@ -127,7 +129,7 @@ namespace Diseño
             this.cbSintoma3.Size = new System.Drawing.Size(121, 21);
             this.cbSintoma3.TabIndex = 8;
             this.cbSintoma3.Visible = false;
-            this.cbSintoma3.SelectionChangeCommitted += new System.EventHandler(this.cbSintoma3_SelectionChangeCommitted);
+            this.cbSintoma3.SelectedIndexChanged += new System.EventHandler(this.cbSintoma3_SelectedIndexChanged);
             // 
             // cbSintoma4
             // 
@@ -148,11 +150,31 @@ namespace Diseño
             this.btnConsultar.UseVisualStyleBackColor = true;
             this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
-            // F_Encuesta
+            // btnReiniciar
+            // 
+            this.btnReiniciar.Location = new System.Drawing.Point(146, 409);
+            this.btnReiniciar.Name = "btnReiniciar";
+            this.btnReiniciar.Size = new System.Drawing.Size(121, 23);
+            this.btnReiniciar.TabIndex = 11;
+            this.btnReiniciar.Text = "Reiniciar sintomas";
+            this.btnReiniciar.UseVisualStyleBackColor = true;
+            this.btnReiniciar.Click += new System.EventHandler(this.btnReiniciar_Click);
+            // 
+            // lblRecomendacion
+            // 
+            this.lblRecomendacion.Font = new System.Drawing.Font("Roboto Light", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecomendacion.Location = new System.Drawing.Point(351, 201);
+            this.lblRecomendacion.Name = "lblRecomendacion";
+            this.lblRecomendacion.Size = new System.Drawing.Size(380, 130);
+            this.lblRecomendacion.TabIndex = 12;
+            // 
+            // F_Consulta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(801, 513);
+            this.Controls.Add(this.lblRecomendacion);
+            this.Controls.Add(this.btnReiniciar);
             this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.cbSintoma4);
             this.Controls.Add(this.cbSintoma3);
@@ -165,7 +187,7 @@ namespace Diseño
             this.Controls.Add(this.labelDescripcion);
             this.Controls.Add(this.lblTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "F_Encuesta";
+            this.Name = "F_Consulta";
             this.Text = "F_Encuesta";
             this.ResumeLayout(false);
 
@@ -184,5 +206,7 @@ namespace Diseño
         private System.Windows.Forms.ComboBox cbSintoma3;
         private System.Windows.Forms.ComboBox cbSintoma4;
         private System.Windows.Forms.Button btnConsultar;
+        private System.Windows.Forms.Button btnReiniciar;
+        private System.Windows.Forms.Label lblRecomendacion;
     }
 }

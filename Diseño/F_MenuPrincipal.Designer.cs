@@ -30,6 +30,7 @@ namespace Diseño
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDatosUsuario = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnDatosNino = new System.Windows.Forms.Button();
@@ -38,12 +39,17 @@ namespace Diseño
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pbClose = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panelPrincipal = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lblNumRecomendaciones = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -51,6 +57,7 @@ namespace Diseño
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(127)))), ((int)(((byte)(123)))));
+            this.panel1.Controls.Add(this.btnDatosUsuario);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btnSalir);
             this.panel1.Controls.Add(this.btnDatosNino);
@@ -63,6 +70,20 @@ namespace Diseño
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(180, 621);
             this.panel1.TabIndex = 0;
+            // 
+            // btnDatosUsuario
+            // 
+            this.btnDatosUsuario.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDatosUsuario.FlatAppearance.BorderSize = 0;
+            this.btnDatosUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDatosUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDatosUsuario.Location = new System.Drawing.Point(0, 255);
+            this.btnDatosUsuario.Name = "btnDatosUsuario";
+            this.btnDatosUsuario.Size = new System.Drawing.Size(180, 38);
+            this.btnDatosUsuario.TabIndex = 7;
+            this.btnDatosUsuario.Text = "Datos Usuario";
+            this.btnDatosUsuario.UseVisualStyleBackColor = true;
+            this.btnDatosUsuario.Click += new System.EventHandler(this.btnDatosUsuario_Click);
             // 
             // button1
             // 
@@ -88,7 +109,7 @@ namespace Diseño
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(180, 38);
             this.btnSalir.TabIndex = 5;
-            this.btnSalir.Text = "Salir al Escritorio";
+            this.btnSalir.Text = "Cerrar sesión";
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
@@ -157,6 +178,9 @@ namespace Diseño
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(127)))), ((int)(((byte)(123)))));
+            this.panel2.Controls.Add(this.lblNumRecomendaciones);
+            this.panel2.Controls.Add(this.pictureBox4);
+            this.panel2.Controls.Add(this.pbClose);
             this.panel2.Controls.Add(this.pictureBox3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(180, 0);
@@ -166,14 +190,38 @@ namespace Diseño
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::Diseño.Properties.Resources.minimize_icon;
+            this.pictureBox4.Location = new System.Drawing.Point(722, 0);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(29, 29);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 2;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            // 
+            // pbClose
+            // 
+            this.pbClose.Image = global::Diseño.Properties.Resources.close_icon;
+            this.pbClose.Location = new System.Drawing.Point(757, 0);
+            this.pbClose.Name = "pbClose";
+            this.pbClose.Size = new System.Drawing.Size(29, 29);
+            this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbClose.TabIndex = 1;
+            this.pbClose.TabStop = false;
+            this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
+            // 
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Diseño.Properties.Resources.notification;
-            this.pictureBox3.Location = new System.Drawing.Point(52, 0);
+            this.pictureBox3.Location = new System.Drawing.Point(0, 0);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(64, 65);
+            this.pictureBox3.Size = new System.Drawing.Size(40, 42);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // panelPrincipal
             // 
@@ -195,6 +243,18 @@ namespace Diseño
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
+            // lblNumRecomendaciones
+            // 
+            this.lblNumRecomendaciones.AutoSize = true;
+            this.lblNumRecomendaciones.BackColor = System.Drawing.Color.Red;
+            this.lblNumRecomendaciones.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumRecomendaciones.ForeColor = System.Drawing.Color.White;
+            this.lblNumRecomendaciones.Location = new System.Drawing.Point(25, 29);
+            this.lblNumRecomendaciones.Name = "lblNumRecomendaciones";
+            this.lblNumRecomendaciones.Size = new System.Drawing.Size(20, 19);
+            this.lblNumRecomendaciones.TabIndex = 3;
+            this.lblNumRecomendaciones.Text = "N";
+            // 
             // F_MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -210,6 +270,9 @@ namespace Diseño
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
@@ -231,6 +294,10 @@ namespace Diseño
         private GradientPanel gradientPanel1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Button btnDatosUsuario;
+        private System.Windows.Forms.PictureBox pbClose;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label lblNumRecomendaciones;
     }
 }
 

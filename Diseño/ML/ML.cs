@@ -47,7 +47,6 @@ namespace ML
         //Hace una prediccion en base a este AgeRange
         private static void PredictSimple(string sintoma1, string sintoma2, string sintoma3, string sintoma4,
             PredictionEngine<AgeRange, AgeRangePrediction> predictionFunction, ref Label label)
-
         {
             var example = new AgeRange()
             {
@@ -62,9 +61,6 @@ namespace ML
                 Sintoma4 = sintoma4
             };
             var prediction = predictionFunction.Predict(example);
-            /*Console.WriteLine($"{example.Sintoma1} | {example.Sintoma2} | " +
-                $"{example.Sintoma3} | {example.Sintoma4}>> " +
-                $"\t {prediction.Label}");*/
 
             label.Text = prediction.Label;
         }

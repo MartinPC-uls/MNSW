@@ -30,6 +30,7 @@ namespace Diseño
         private void InitializeComponent()
         {
             this.panel_control = new System.Windows.Forms.Panel();
+            this.btnTerminar = new System.Windows.Forms.Button();
             this.btnAnterior = new System.Windows.Forms.Button();
             this.btnSiguiente = new System.Windows.Forms.Button();
             this.lblPreguntasRespondidas = new System.Windows.Forms.Label();
@@ -47,7 +48,6 @@ namespace Diseño
             this.c = new System.Windows.Forms.RadioButton();
             this.b = new System.Windows.Forms.RadioButton();
             this.a = new System.Windows.Forms.RadioButton();
-            this.btnTerminar = new System.Windows.Forms.Button();
             this.panel_control.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
@@ -66,6 +66,16 @@ namespace Diseño
             this.panel_control.Name = "panel_control";
             this.panel_control.Size = new System.Drawing.Size(773, 132);
             this.panel_control.TabIndex = 0;
+            // 
+            // btnTerminar
+            // 
+            this.btnTerminar.Location = new System.Drawing.Point(336, 29);
+            this.btnTerminar.Name = "btnTerminar";
+            this.btnTerminar.Size = new System.Drawing.Size(82, 23);
+            this.btnTerminar.TabIndex = 5;
+            this.btnTerminar.Text = "Terminar";
+            this.btnTerminar.UseVisualStyleBackColor = true;
+            this.btnTerminar.Click += new System.EventHandler(this.btnTerminar_Click);
             // 
             // btnAnterior
             // 
@@ -121,7 +131,7 @@ namespace Diseño
             this.lblPregunta.Font = new System.Drawing.Font("Roboto Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPregunta.Location = new System.Drawing.Point(40, 27);
             this.lblPregunta.Name = "lblPregunta";
-            this.lblPregunta.Size = new System.Drawing.Size(675, 68);
+            this.lblPregunta.Size = new System.Drawing.Size(675, 57);
             this.lblPregunta.TabIndex = 2;
             this.lblPregunta.Text = "label1";
             // 
@@ -238,16 +248,6 @@ namespace Diseño
             this.a.TabStop = true;
             this.a.Text = "a";
             this.a.UseVisualStyleBackColor = true;
-            // 
-            // btnTerminar
-            // 
-            this.btnTerminar.Location = new System.Drawing.Point(336, 29);
-            this.btnTerminar.Name = "btnTerminar";
-            this.btnTerminar.Size = new System.Drawing.Size(82, 23);
-            this.btnTerminar.TabIndex = 5;
-            this.btnTerminar.Text = "Terminar";
-            this.btnTerminar.UseVisualStyleBackColor = true;
-            this.btnTerminar.Click += new System.EventHandler(this.btnTerminar_Click);
             // 
             // F_TestCI
             // 

@@ -63,5 +63,12 @@ namespace Diseño
                 }
             }
         }
+
+        private void btnRegistro_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            F_Registro registro = new F_Registro();
+            registro.ShowDialog();
+        }
     }
 }

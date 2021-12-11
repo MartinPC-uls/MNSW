@@ -225,24 +225,51 @@ namespace Diseño
             string recomendacion_em = "";
             if (ptj_lm < 20)
             {
-                recomendacion_lm = "Haga ejercicios de cálculo mental (contar, agrupar cosas) con el niño, de esta manera" +
-                    " podrá mejorar su inteligencia lógico-matemática.";
+                recomendacion_lm = "La inteligencia lógico-matemática del niño es deficiente, sin embargo, se puede tratar" +
+                    " con simples ejercicios como comparar y clasificar cosas, jugar con bloques y explicar cosas cotidianas";
             } else if (ptj_lm >= 20 && ptj_lm < 50)
             {
-                recomendacion_lm = "";
+                recomendacion_lm = "La inteligencia lógico matemática del niño es un poco deficiente, para tratarla" +
+                    " trate de ejercitar al niño con ejercicios de contar cosas por al menos 1 mes.";
             } else if (ptj_lm >= 50 && ptj_lm < 75)
             {
-                recomendacion_lm = "";
-            } else if (ptj_lm >= 75 && ptj_lm < 100)
-            {
-                recomendacion_lm = "";
+                recomendacion_lm = "La inteligencia lógico matemática del niño debe ejercitarse. Haga ejercicios de agrupar cosas" +
+                    " y contarlas por al menos 1 mes.";
             }
 
-            // agregar recomendaciones lm
-            // agregar las otras recomendaciones: es y em.
+            if (ptj_es < 20)
+            {
+                recomendacion_es = "Invite al niño a jugar videojuegos que lo puedan entretener. Los videojuegos" +
+                    " pueden ser muy buenos a toda edad y ayuda a mejorar la inteligencia espacial del niño ";
+            } else if (ptj_es >= 20 && ptj_es < 50)
+            {
+                recomendacion_es = "La inteligencia especial del niño es un poco deficiente, para tratarla" +
+                    " trate de ejercitar al niño con ejercicios de asimilar cosas y diferenciar el tamaño de cosas.";
+            } else if (ptj_es >= 50 && ptj_es < 75)
+            {
+                recomendacion_es = "La inteligencia espacial del niño debe ejercitarse. Los juegos de puzzles, LEGO son un buen" +
+                    " tratamiento para los niños.";
+            }
 
-            // mostrar las recomendaciones (serán 3) en una ventana desplegable del ícono de notificaciones
-            // del menú principal (también hay que trabajar este menú).
+            if (ptj_em < 20)
+            {
+                recomendacion_em = "Realice actividades con el niño tales como leer cuentos o dibujar emociones.";
+            } else if (ptj_em >= 20 && ptj_em < 50)
+            {
+                recomendacion_em = "El juego \"Mi nombre, Mis virtudes\" es un buen ejemplo para que el niño" +
+                    " se identifique y mejore su autoconcepto: ¿Cómo soy?, ¿Cómo me veo?.";
+            } else if (ptj_em >= 50 && ptj_em < 75)
+            {
+                recomendacion_em = "Haga que el niño dibuje mientras escuche música. La música nos evoca emociones, y" +
+                    " la pintura es una buena manera de expresarlas.";
+            }
+
+            if (!(recomendacion_lm == ""))
+                consulta.addRecomendacion(Utils.user, recomendacion_lm);
+            if (!(recomendacion_es == ""))
+                consulta.addRecomendacion(Utils.user, recomendacion_es);
+            if (!(recomendacion_em == ""))
+                consulta.addRecomendacion(Utils.user, recomendacion_em);
         }
     }
 }

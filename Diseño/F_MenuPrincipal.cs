@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
+using Diseño.Conexion;
 
 namespace Diseño
 {
@@ -20,6 +21,8 @@ namespace Diseño
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
+        public static int numRecomendaciones;
+
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
         [DllImportAttribute("user32.dll")]
@@ -29,6 +32,7 @@ namespace Diseño
         {
             this.user = user;
             InitializeComponent();
+            setNumRecomendaciones();
             openChildForm(new PanelBienvenida(this));
         }
 
@@ -72,8 +76,10 @@ namespace Diseño
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            //this.Close();
-            Application.Exit();
+            this.Hide();
+            Utils.user = "";
+            F_InicioSesion inicioSesion = new F_InicioSesion();
+            inicioSesion.ShowDialog();
         }
         
         private void lblBenvenido()
@@ -103,7 +109,42 @@ namespace Diseño
 
         private void button1_Click(object sender, EventArgs e)
         {
-            openChildForm(new F_Encuesta());
+            openChildForm(new F_Consulta(this));
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            openChildForm(new PanelRecomendaciones());
+        }
+
+        private void btnDatosUsuario_Click(object sender, EventArgs e)
+        {
+            openChildForm(new F_DatosUsuario(this));
+        }
+
+        private void pbClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+        private void setNumRecomendaciones()
+        {
+            Consulta consulta = new Consulta();
+            List<Recomendacion> recomendaciones = consulta.getRecomendaciones(Utils.user);
+            numRecomendaciones = recomendaciones.Count;
+            if (!(numRecomendaciones == 0))
+            {
+                lblNumRecomendaciones.Visible = true;
+                lblNumRecomendaciones.Text = Convert.ToString(numRecomendaciones);
+            } else
+            {
+                lblNumRecomendaciones.Text = "0";
+                lblNumRecomendaciones.Visible = false;
+            }
         }
     }
 

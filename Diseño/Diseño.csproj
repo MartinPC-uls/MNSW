@@ -16,6 +16,21 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>x64</PlatformTarget>
@@ -120,11 +135,17 @@
   <ItemGroup>
     <Compile Include="Conexion\Connection.cs" />
     <Compile Include="Conexion\Consulta.cs" />
-    <Compile Include="F_Encuesta.cs">
+    <Compile Include="F_Consulta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="F_Encuesta.Designer.cs">
-      <DependentUpon>F_Encuesta.cs</DependentUpon>
+    <Compile Include="F_Consulta.Designer.cs">
+      <DependentUpon>F_Consulta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F_DatosUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_DatosUsuario.Designer.cs">
+      <DependentUpon>F_DatosUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="F_InfoBienvenida.cs">
       <SubType>Form</SubType>
@@ -144,11 +165,24 @@
     <Compile Include="F_InicioSesion.Designer.cs">
       <DependentUpon>F_InicioSesion.cs</DependentUpon>
     </Compile>
+    <Compile Include="F_Registro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_Registro.Designer.cs">
+      <DependentUpon>F_Registro.cs</DependentUpon>
+    </Compile>
     <Compile Include="ML\Data\AgeRange.cs" />
     <Compile Include="ML\Data\AgeRangePrediction.cs" />
     <Compile Include="ML\ML.cs" />
+    <Compile Include="PanelRecomendaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PanelRecomendaciones.Designer.cs">
+      <DependentUpon>PanelRecomendaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pregunta.cs" />
     <Compile Include="Alternativas.cs" />
+    <Compile Include="Recomendacion.cs" />
     <Compile Include="RespuestasCorrectas.cs" />
     <Compile Include="R_Datos_Nino.cs">
       <SubType>Form</SubType>
@@ -189,8 +223,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils.cs" />
-    <EmbeddedResource Include="F_Encuesta.resx">
-      <DependentUpon>F_Encuesta.cs</DependentUpon>
+    <EmbeddedResource Include="F_Consulta.resx">
+      <DependentUpon>F_Consulta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_DatosUsuario.resx">
+      <DependentUpon>F_DatosUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F_InfoBienvenida.resx">
       <DependentUpon>F_InfoBienvenida.cs</DependentUpon>
@@ -200,6 +237,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F_InicioSesion.resx">
       <DependentUpon>F_InicioSesion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_Registro.resx">
+      <DependentUpon>F_Registro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanelRecomendaciones.resx">
+      <DependentUpon>PanelRecomendaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="R_Datos_Nino.resx">
       <DependentUpon>R_Datos_Nino.cs</DependentUpon>
@@ -284,6 +327,8 @@
     <None Include="Resources\notification.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\minimize_icon.png" />
+    <EmbeddedResource Include="Resources\close_icon1.png" />
     <Content Include="Resources\es_1.jpg" />
     <Content Include="Resources\es_10.jpg" />
     <Content Include="Resources\es_11.jpg" />
@@ -299,6 +344,18 @@
     <Content Include="Resources\lm_1.jpg" />
     <Content Include="Resources\lm_12.jpg" />
     <Content Include="Resources\lm_8.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

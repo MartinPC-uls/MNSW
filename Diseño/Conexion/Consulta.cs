@@ -30,6 +30,28 @@ namespace Diseño.Conexion
             cn.close();
             return false;
         }
+        public bool verificarUsuario(string usuario)
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "SELECT * FROM usuarios WHERE email = '" + usuario + "'";
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+                return true;
+
+            cn.close();
+            return false;
+        }
+        public void agregarUsuario(string usuario, string password)
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "INSERT INTO usuarios(email, password) VALUES (@email, @password)";
+            cmd.Parameters.AddWithValue("@email", usuario);
+            cmd.Parameters.AddWithValue("@password", password);
+            cmd.ExecuteNonQuery();
+            cn.close();
+        }
         public void addNino(string email, string nombre, int edad, int altura, int peso, string sexo, int ci = 0)
         {
             cn.open();
@@ -123,6 +145,121 @@ namespace Diseño.Conexion
             cmd.ExecuteNonQuery();
             cn.close();
         }
+        public void addRecomendacion(string user, string recomendacion)
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "SELECT * FROM recomendaciones WHERE email = '" + user + "'";
+            MySqlDataReader reader = cmd.ExecuteReader();
 
+            string text = "";
+
+            while (reader.Read())
+            {
+                for (int i = 1; i <= 15; i++)
+                {
+                    if (reader.GetString(i) == "0")
+                    {
+                        text = "UPDATE recomendaciones SET r" + i + " = '" + recomendacion + "'" +
+                            " WHERE email = '" + user + "'";
+                        break;
+                    }
+                }
+            }
+            cn.close();
+
+            cn.open();
+            MySqlCommand cmd2 = cn.CreateCommand();
+            cmd2.CommandText = text;
+            cmd2.ExecuteNonQuery();
+            cn.close();
+
+        }
+
+        public List<Recomendacion> getRecomendaciones(string user)
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "SELECT * FROM recomendaciones WHERE email = '" + user + "'";
+            MySqlDataReader reader = cmd.ExecuteReader();
+            List<Recomendacion> recomendaciones = new List<Recomendacion>();
+            while (reader.Read())
+            {
+                for (int i = 1; i <= 15; i++)
+                {
+                    if (reader.GetString(i) != "0")
+                    {
+                        recomendaciones.Add(new Recomendacion("", reader.GetString(i)));
+                    } else
+                    {
+                        break;
+                    }
+                }
+            }
+            cn.close();
+            return recomendaciones;
+        }
+        public void updtNombreUsuario(string nombreNuevo)
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "UPDATE usuarios SET nombre_usuario = '" + nombreNuevo + "' WHERE email = '" + Utils.user + "'";
+            cmd.ExecuteNonQuery();
+            cn.close();
+        }
+        public void updtEdadUsuario(int edadNueva)
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "UPDATE usuarios SET edad_usuario = '" + edadNueva + "' WHERE email = '" + Utils.user + "'";
+            cmd.ExecuteNonQuery();
+            cn.close();
+        }
+        public void updtEmailUsuario(string emailNuevo)
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "UPDATE usuarios SET email = '" + emailNuevo + "' WHERE email = '" + Utils.user + "'";
+            cmd.ExecuteNonQuery();
+            cn.close();
+        }
+        public void updtPasswordUsuario(string passwordNuevo)
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "UPDATE usuarios SET password = '" + passwordNuevo + "'";
+            cmd.ExecuteNonQuery();
+            cn.close();
+        }
+        public string getNombreUsuario(string email)
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "SELECT nombre_usuario FROM usuarios WHERE email = '" + email + "'";
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                string _s = reader.GetString(0);
+                cn.close();
+                return _s;
+            }
+            cn.close();
+            return "";
+        }
+        public int getEdadUsuario(string email)
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "SELECT edad_usuario FROM usuarios WHERE email = '" + email + "'";
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                int _i = reader.GetInt16(0);
+                cn.close();
+                return _i;
+            }
+            cn.close();
+            return 0;
+        }
     }
 }
