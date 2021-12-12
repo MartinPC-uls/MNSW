@@ -37,7 +37,10 @@ namespace Diseño.Conexion
             cmd.CommandText = "SELECT * FROM usuarios WHERE email = '" + usuario + "'";
             MySqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read())
+            {
+                cn.close();
                 return true;
+            }
 
             cn.close();
             return false;
@@ -144,14 +147,14 @@ namespace Diseño.Conexion
             cmd.ExecuteNonQuery();
             cn.close();
         }
-        public void addRecomendacion(string user, string recomendacion)
+        public void addRecomendacion(string user, string recomendacion = "")
         {
             cn.open();
             MySqlCommand cmd = cn.CreateCommand();
             cmd.CommandText = "SELECT * FROM recomendaciones WHERE email = '" + user + "'";
             MySqlDataReader reader = cmd.ExecuteReader();
 
-            string text = "";
+            string text = "INSERT recomendaciones SET email = '" + user + "'";
 
             while (reader.Read())
             {
@@ -159,6 +162,10 @@ namespace Diseño.Conexion
                 {
                     if (reader.GetString(i) == "0")
                     {
+                        if (recomendacion == "")
+                        {
+                            recomendacion = "0";
+                        }
                         text = "UPDATE recomendaciones SET r" + i + " = '" + recomendacion + "'" +
                             " WHERE email = '" + user + "'";
                         break;

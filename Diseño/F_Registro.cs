@@ -28,6 +28,7 @@ namespace Diseño
                 if (!consulta.verificarUsuario(txtUser.Text))
                 {
                     consulta.agregarUsuario(txtUser.Text, txtPassword.Text);
+                    consulta.addRecomendacion(txtUser.Text);
                     this.Hide();
                     string user = txtUser.Text;
                     Utils.user = user;
