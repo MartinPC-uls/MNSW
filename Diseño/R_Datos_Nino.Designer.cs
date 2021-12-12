@@ -30,8 +30,8 @@ namespace Diseño
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnFoto = new System.Windows.Forms.Button();
-            this.picFoto = new System.Windows.Forms.PictureBox();
+            this.txtSexo = new System.Windows.Forms.TextBox();
+            this.lblSexo = new System.Windows.Forms.Label();
             this.btnSiguiente = new System.Windows.Forms.Button();
             this.txtPeso = new System.Windows.Forms.TextBox();
             this.txtAltura = new System.Windows.Forms.TextBox();
@@ -42,18 +42,13 @@ namespace Diseño
             this.lblEdad = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblDatosNino = new System.Windows.Forms.Label();
-            this.lblSexo = new System.Windows.Forms.Label();
-            this.txtSexo = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picFoto)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.txtSexo);
             this.panel1.Controls.Add(this.lblSexo);
-            this.panel1.Controls.Add(this.btnFoto);
-            this.panel1.Controls.Add(this.picFoto);
             this.panel1.Controls.Add(this.btnSiguiente);
             this.panel1.Controls.Add(this.txtPeso);
             this.panel1.Controls.Add(this.txtAltura);
@@ -69,27 +64,26 @@ namespace Diseño
             this.panel1.Size = new System.Drawing.Size(776, 489);
             this.panel1.TabIndex = 0;
             // 
-            // btnFoto
+            // txtSexo
             // 
-            this.btnFoto.Location = new System.Drawing.Point(605, 190);
-            this.btnFoto.Name = "btnFoto";
-            this.btnFoto.Size = new System.Drawing.Size(168, 23);
-            this.btnFoto.TabIndex = 11;
-            this.btnFoto.Text = "Añadir foto";
-            this.btnFoto.UseVisualStyleBackColor = true;
+            this.txtSexo.Location = new System.Drawing.Point(153, 288);
+            this.txtSexo.Name = "txtSexo";
+            this.txtSexo.Size = new System.Drawing.Size(63, 20);
+            this.txtSexo.TabIndex = 13;
             // 
-            // picFoto
+            // lblSexo
             // 
-            this.picFoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picFoto.Location = new System.Drawing.Point(605, 39);
-            this.picFoto.Name = "picFoto";
-            this.picFoto.Size = new System.Drawing.Size(168, 145);
-            this.picFoto.TabIndex = 10;
-            this.picFoto.TabStop = false;
+            this.lblSexo.AutoSize = true;
+            this.lblSexo.Font = new System.Drawing.Font("Roboto Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSexo.Location = new System.Drawing.Point(31, 279);
+            this.lblSexo.Name = "lblSexo";
+            this.lblSexo.Size = new System.Drawing.Size(69, 29);
+            this.lblSexo.TabIndex = 12;
+            this.lblSexo.Text = "Sexo:";
             // 
             // btnSiguiente
             // 
-            this.btnSiguiente.Location = new System.Drawing.Point(558, 429);
+            this.btnSiguiente.Location = new System.Drawing.Point(481, 366);
             this.btnSiguiente.Name = "btnSiguiente";
             this.btnSiguiente.Size = new System.Drawing.Size(218, 57);
             this.btnSiguiente.TabIndex = 9;
@@ -175,27 +169,11 @@ namespace Diseño
             this.lblDatosNino.TabIndex = 0;
             this.lblDatosNino.Text = "Datos del niño";
             // 
-            // lblSexo
-            // 
-            this.lblSexo.AutoSize = true;
-            this.lblSexo.Font = new System.Drawing.Font("Roboto Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSexo.Location = new System.Drawing.Point(31, 279);
-            this.lblSexo.Name = "lblSexo";
-            this.lblSexo.Size = new System.Drawing.Size(69, 29);
-            this.lblSexo.TabIndex = 12;
-            this.lblSexo.Text = "Sexo:";
-            // 
-            // txtSexo
-            // 
-            this.txtSexo.Location = new System.Drawing.Point(153, 288);
-            this.txtSexo.Name = "txtSexo";
-            this.txtSexo.Size = new System.Drawing.Size(63, 20);
-            this.txtSexo.TabIndex = 13;
-            // 
             // R_Datos_Nino
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(801, 513);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -203,7 +181,6 @@ namespace Diseño
             this.Text = "Form3";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picFoto)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -221,8 +198,6 @@ namespace Diseño
         private System.Windows.Forms.Label lblEdad;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblDatosNino;
-        private System.Windows.Forms.Button btnFoto;
-        private System.Windows.Forms.PictureBox picFoto;
         private System.Windows.Forms.TextBox txtSexo;
         private System.Windows.Forms.Label lblSexo;
     }

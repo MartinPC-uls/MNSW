@@ -31,20 +31,20 @@ namespace Diseño
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDatosUsuario = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnConsultarSintomas = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.btnDatosNino_ = new System.Windows.Forms.Button();
             this.btnDatosNino = new System.Windows.Forms.Button();
-            this.btnCapacidadIntelectual = new System.Windows.Forms.Button();
             this.btnInformacion = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblNumRecomendaciones = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panelPrincipal = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.lblNumRecomendaciones = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -58,10 +58,10 @@ namespace Diseño
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(127)))), ((int)(((byte)(123)))));
             this.panel1.Controls.Add(this.btnDatosUsuario);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnConsultarSintomas);
             this.panel1.Controls.Add(this.btnSalir);
+            this.panel1.Controls.Add(this.btnDatosNino_);
             this.panel1.Controls.Add(this.btnDatosNino);
-            this.panel1.Controls.Add(this.btnCapacidadIntelectual);
             this.panel1.Controls.Add(this.btnInformacion);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -85,19 +85,19 @@ namespace Diseño
             this.btnDatosUsuario.UseVisualStyleBackColor = true;
             this.btnDatosUsuario.Click += new System.EventHandler(this.btnDatosUsuario_Click);
             // 
-            // button1
+            // btnConsultarSintomas
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(0, 217);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(180, 38);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Consulte por síntomas";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnConsultarSintomas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnConsultarSintomas.FlatAppearance.BorderSize = 0;
+            this.btnConsultarSintomas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConsultarSintomas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConsultarSintomas.Location = new System.Drawing.Point(0, 217);
+            this.btnConsultarSintomas.Name = "btnConsultarSintomas";
+            this.btnConsultarSintomas.Size = new System.Drawing.Size(180, 38);
+            this.btnConsultarSintomas.TabIndex = 6;
+            this.btnConsultarSintomas.Text = "Consulte por síntomas";
+            this.btnConsultarSintomas.UseVisualStyleBackColor = true;
+            this.btnConsultarSintomas.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnSalir
             // 
@@ -113,33 +113,33 @@ namespace Diseño
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // btnDatosNino_
+            // 
+            this.btnDatosNino_.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDatosNino_.FlatAppearance.BorderSize = 0;
+            this.btnDatosNino_.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDatosNino_.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDatosNino_.Location = new System.Drawing.Point(0, 179);
+            this.btnDatosNino_.Name = "btnDatosNino_";
+            this.btnDatosNino_.Size = new System.Drawing.Size(180, 38);
+            this.btnDatosNino_.TabIndex = 4;
+            this.btnDatosNino_.Text = "Realize el test";
+            this.btnDatosNino_.UseVisualStyleBackColor = true;
+            this.btnDatosNino_.Click += new System.EventHandler(this.BtnDatosNino_Click);
+            // 
             // btnDatosNino
             // 
             this.btnDatosNino.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnDatosNino.FlatAppearance.BorderSize = 0;
             this.btnDatosNino.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDatosNino.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDatosNino.Location = new System.Drawing.Point(0, 179);
+            this.btnDatosNino.Location = new System.Drawing.Point(0, 141);
             this.btnDatosNino.Name = "btnDatosNino";
             this.btnDatosNino.Size = new System.Drawing.Size(180, 38);
-            this.btnDatosNino.TabIndex = 4;
-            this.btnDatosNino.Text = "Realize el test";
+            this.btnDatosNino.TabIndex = 3;
+            this.btnDatosNino.Text = "Datos del niño";
             this.btnDatosNino.UseVisualStyleBackColor = true;
-            this.btnDatosNino.Click += new System.EventHandler(this.BtnDatosNino_Click);
-            // 
-            // btnCapacidadIntelectual
-            // 
-            this.btnCapacidadIntelectual.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCapacidadIntelectual.FlatAppearance.BorderSize = 0;
-            this.btnCapacidadIntelectual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCapacidadIntelectual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCapacidadIntelectual.Location = new System.Drawing.Point(0, 141);
-            this.btnCapacidadIntelectual.Name = "btnCapacidadIntelectual";
-            this.btnCapacidadIntelectual.Size = new System.Drawing.Size(180, 38);
-            this.btnCapacidadIntelectual.TabIndex = 3;
-            this.btnCapacidadIntelectual.Text = "Datos del niño";
-            this.btnCapacidadIntelectual.UseVisualStyleBackColor = true;
-            this.btnCapacidadIntelectual.Click += new System.EventHandler(this.BtnCapacidadIntelectual_Click);
+            this.btnDatosNino.Click += new System.EventHandler(this.BtnCapacidadIntelectual_Click);
             // 
             // btnInformacion
             // 
@@ -189,6 +189,18 @@ namespace Diseño
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
+            // 
+            // lblNumRecomendaciones
+            // 
+            this.lblNumRecomendaciones.AutoSize = true;
+            this.lblNumRecomendaciones.BackColor = System.Drawing.Color.Red;
+            this.lblNumRecomendaciones.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumRecomendaciones.ForeColor = System.Drawing.Color.White;
+            this.lblNumRecomendaciones.Location = new System.Drawing.Point(25, 29);
+            this.lblNumRecomendaciones.Name = "lblNumRecomendaciones";
+            this.lblNumRecomendaciones.Size = new System.Drawing.Size(20, 19);
+            this.lblNumRecomendaciones.TabIndex = 3;
+            this.lblNumRecomendaciones.Text = "N";
             // 
             // pictureBox4
             // 
@@ -243,18 +255,6 @@ namespace Diseño
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
-            // lblNumRecomendaciones
-            // 
-            this.lblNumRecomendaciones.AutoSize = true;
-            this.lblNumRecomendaciones.BackColor = System.Drawing.Color.Red;
-            this.lblNumRecomendaciones.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumRecomendaciones.ForeColor = System.Drawing.Color.White;
-            this.lblNumRecomendaciones.Location = new System.Drawing.Point(25, 29);
-            this.lblNumRecomendaciones.Name = "lblNumRecomendaciones";
-            this.lblNumRecomendaciones.Size = new System.Drawing.Size(20, 19);
-            this.lblNumRecomendaciones.TabIndex = 3;
-            this.lblNumRecomendaciones.Text = "N";
-            // 
             // F_MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,17 +284,17 @@ namespace Diseño
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnInformacion;
+        public System.Windows.Forms.Button btnInformacion;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button btnCapacidadIntelectual;
+        public System.Windows.Forms.Button btnDatosNino;
         public System.Windows.Forms.Panel panelPrincipal;
-        private System.Windows.Forms.Button btnDatosNino;
-        private System.Windows.Forms.Button btnSalir;
+        public System.Windows.Forms.Button btnDatosNino_;
+        public System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.PictureBox pictureBox2;
         private GradientPanel gradientPanel1;
-        private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Button btnConsultarSintomas;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Button btnDatosUsuario;
+        public System.Windows.Forms.Button btnDatosUsuario;
         private System.Windows.Forms.PictureBox pbClose;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label lblNumRecomendaciones;

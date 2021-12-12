@@ -32,6 +32,7 @@ namespace Diseño
         {
             this.user = user;
             InitializeComponent();
+            deshabilitarBotones();
             setNumRecomendaciones();
             openChildForm(new PanelBienvenida(this));
         }
@@ -52,7 +53,7 @@ namespace Diseño
 
         private void BtnCapacidadIntelectual_Click(object sender, EventArgs e)
         {
-            //openChildForm(new F_DatosFisicos());
+            openChildForm(new F_DatosNino(this));
         }
         private Form activeForm = null;
         private void openChildForm(Form childForm)
@@ -67,6 +68,17 @@ namespace Diseño
             panelPrincipal.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
+        }
+
+        private void deshabilitarBotones() {
+            Consulta consulta = new Consulta();
+            if (!consulta.verificarNinoRegistrado())
+            {
+                btnDatosNino.Visible = false;
+                btnDatosNino_.Visible = false;
+                btnConsultarSintomas.Visible = false;
+                btnDatosUsuario.Visible = false;
+            }
         }
 
         private void BtnDatosNino_Click(object sender, EventArgs e)

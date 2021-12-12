@@ -38,16 +38,19 @@ namespace Diseño
             this.panelEdad = new System.Windows.Forms.Panel();
             this.lblEdad = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblDatosFisicos = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.lblSalida = new System.Windows.Forms.Label();
+            this.lblIntLM = new System.Windows.Forms.Label();
+            this.lblIntES = new System.Windows.Forms.Label();
+            this.lblIntEM = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.fotoNino)).BeginInit();
             this.panelNombre.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelEdad.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -126,11 +129,24 @@ namespace Diseño
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.lblDatosFisicos);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 198);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(757, 38);
             this.panel3.TabIndex = 5;
+            // 
+            // lblDatosFisicos
+            // 
+            this.lblDatosFisicos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblDatosFisicos.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDatosFisicos.Location = new System.Drawing.Point(0, 0);
+            this.lblDatosFisicos.Name = "lblDatosFisicos";
+            this.lblDatosFisicos.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblDatosFisicos.Size = new System.Drawing.Size(757, 38);
+            this.lblDatosFisicos.TabIndex = 1;
+            this.lblDatosFisicos.Text = " ";
+            this.lblDatosFisicos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
             // 
@@ -150,18 +166,18 @@ namespace Diseño
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.lblIntEM);
+            this.panel5.Controls.Add(this.lblIntES);
+            this.panel5.Controls.Add(this.lblIntLM);
             this.panel5.Controls.Add(this.button2);
-            this.panel5.Controls.Add(this.button1);
-            this.panel5.Controls.Add(this.lblSalida);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(132, 236);
+            this.panel5.Location = new System.Drawing.Point(132, 278);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(493, 248);
+            this.panel5.Size = new System.Drawing.Size(493, 206);
             this.panel5.TabIndex = 8;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(171, 153);
+            this.button2.Location = new System.Drawing.Point(168, 153);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(151, 23);
             this.button2.TabIndex = 3;
@@ -169,27 +185,41 @@ namespace Diseño
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
+            // lblIntLM
             // 
-            this.button1.Location = new System.Drawing.Point(171, 100);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(151, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "VER REGISTRO";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.lblIntLM.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblIntLM.Font = new System.Drawing.Font("Roboto Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIntLM.Location = new System.Drawing.Point(0, 0);
+            this.lblIntLM.Name = "lblIntLM";
+            this.lblIntLM.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblIntLM.Size = new System.Drawing.Size(493, 24);
+            this.lblIntLM.TabIndex = 4;
+            this.lblIntLM.Text = "Inteligencia Lógico-Matemático:";
+            this.lblIntLM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblSalida
+            // lblIntES
             // 
-            this.lblSalida.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblSalida.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSalida.Location = new System.Drawing.Point(0, 0);
-            this.lblSalida.Name = "lblSalida";
-            this.lblSalida.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblSalida.Size = new System.Drawing.Size(493, 97);
-            this.lblSalida.TabIndex = 1;
-            this.lblSalida.Text = "CI: 0";
-            this.lblSalida.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblIntES.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblIntES.Font = new System.Drawing.Font("Roboto Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIntES.Location = new System.Drawing.Point(0, 24);
+            this.lblIntES.Name = "lblIntES";
+            this.lblIntES.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblIntES.Size = new System.Drawing.Size(493, 25);
+            this.lblIntES.TabIndex = 5;
+            this.lblIntES.Text = "Inteligencia Espacial:";
+            this.lblIntES.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblIntEM
+            // 
+            this.lblIntEM.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblIntEM.Font = new System.Drawing.Font("Roboto Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIntEM.Location = new System.Drawing.Point(0, 49);
+            this.lblIntEM.Name = "lblIntEM";
+            this.lblIntEM.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblIntEM.Size = new System.Drawing.Size(493, 27);
+            this.lblIntEM.TabIndex = 6;
+            this.lblIntEM.Text = "Inteligencia Emocional:";
+            this.lblIntEM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // F_DatosNino
             // 
@@ -212,6 +242,7 @@ namespace Diseño
             this.panelNombre.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panelEdad.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -230,8 +261,10 @@ namespace Diseño
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label lblSalida;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label lblDatosFisicos;
+        private System.Windows.Forms.Label lblIntEM;
+        private System.Windows.Forms.Label lblIntES;
+        private System.Windows.Forms.Label lblIntLM;
     }
 }

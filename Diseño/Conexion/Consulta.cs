@@ -52,19 +52,18 @@ namespace Diseño.Conexion
             cmd.ExecuteNonQuery();
             cn.close();
         }
-        public void addNino(string email, string nombre, int edad, int altura, int peso, string sexo, int ci = 0)
+        public void addNino(string email, string nombre, int edad, int altura, int peso, string sexo)
         {
             cn.open();
             MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "INSERT INTO nino_usuario(email, nombre, edad, altura, peso, sexo, ci)" +
-                " VALUES(@email, @nombre, @edad, @altura, @peso, @sexo, @ci)";
+            cmd.CommandText = "INSERT INTO nino_usuario(email, nombre, edad, altura, peso, sexo)" +
+                " VALUES(@email, @nombre, @edad, @altura, @peso, @sexo)";
             cmd.Parameters.AddWithValue("@email", email);
             cmd.Parameters.AddWithValue("@nombre", nombre);
             cmd.Parameters.AddWithValue("@edad", edad);
             cmd.Parameters.AddWithValue("@altura", altura);
             cmd.Parameters.AddWithValue("@peso", peso);
             cmd.Parameters.AddWithValue("@sexo", sexo);
-            cmd.Parameters.AddWithValue("@ci", ci);
             cmd.ExecuteNonQuery();
             cn.close();
         }
@@ -260,6 +259,145 @@ namespace Diseño.Conexion
             }
             cn.close();
             return 0;
+        }
+        public string getNombreNino()
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "SELECT nombre FROM nino_usuario WHERE email = '" + Utils.user + "'";
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                string _s = reader.GetString(0);
+                cn.close();
+                return _s;
+            }
+            cn.close();
+            return "";
+        }
+        public int getEdadNino()
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "SELECT edad FROM nino_usuario WHERE email = '" + Utils.user + "'";
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                int _i = reader.GetInt16(0);
+                cn.close();
+                return _i;
+            }
+            cn.close();
+            return 0;
+        }
+        public int getAlturaNino()
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "SELECT altura FROM nino_usuario WHERE email = '" + Utils.user + "'";
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                int _i = reader.GetInt16(0);
+                cn.close();
+                return _i;
+            }
+            cn.close();
+            return 0;
+        }
+        public int getPesoNino()
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "SELECT peso FROM nino_usuario WHERE email = '" + Utils.user + "'";
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                int _i = reader.GetInt16(0);
+                cn.close();
+                return _i;
+            }
+            cn.close();
+            return 0;
+        }
+        public string getSexoNino()
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "SELECT sexo FROM nino_usuario WHERE email = '" + Utils.user + "'";
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                string _s = reader.GetString(0);
+                cn.close();
+                return _s;
+            }
+            cn.close();
+            return "";
+        }
+        public int getIntLM()
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "SELECT lm FROM ninos_puntajes WHERE email = '" + Utils.user + "'";
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                int _i = reader.GetInt16(0);
+                cn.close();
+                return _i;
+            }
+            cn.close();
+            return 0;
+        }
+        public int getIntES()
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "SELECT es FROM ninos_puntajes WHERE email = '" + Utils.user + "'";
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                int _i = reader.GetInt16(0);
+                cn.close();
+                return _i;
+            }
+            cn.close();
+            return 0;
+        }
+        public int getIntEM()
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "SELECT em FROM ninos_puntajes WHERE email = '" + Utils.user + "'";
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                int _i = reader.GetInt16(0);
+                cn.close();
+                return _i;
+            }
+            cn.close();
+            return 0;
+        }
+        public bool verificarNinoRegistrado()
+        {
+            cn.open();
+            MySqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = "SELECT email FROM nino_usuario WHERE email = '" + Utils.user + "'";
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                if (reader.GetString(0) == null)
+                {
+                    cn.close();
+                    return false;
+                }
+                cn.close();
+                return true;
+            }
+            cn.close();
+            return false;
         }
     }
 }

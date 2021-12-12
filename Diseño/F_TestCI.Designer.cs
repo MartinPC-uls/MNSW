@@ -35,7 +35,6 @@ namespace Diseño
             this.btnSiguiente = new System.Windows.Forms.Button();
             this.lblPreguntasRespondidas = new System.Windows.Forms.Label();
             this.lblPreguntas = new System.Windows.Forms.Label();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblPregunta = new System.Windows.Forms.Label();
             this.pbImagen = new System.Windows.Forms.PictureBox();
@@ -253,7 +252,7 @@ namespace Diseño
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(236)))), ((int)(((byte)(232)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(773, 523);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel_control);
@@ -274,7 +273,6 @@ namespace Diseño
         private System.Windows.Forms.Panel panel_control;
         private System.Windows.Forms.Label lblPreguntas;
         private System.Windows.Forms.Label lblPreguntasRespondidas;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button btnSiguiente;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblPregunta;

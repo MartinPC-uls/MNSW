@@ -117,4 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lblTexto.Text" xml:space="preserve">
+    <value>El síndrome de Down es una afección en la que la persona tiene un cromosoma extra. Los cromosomas son pequeños “paquetes” de genes en el organismo. Determinan cómo se forma el cuerpo del bebé durante el embarazo y cómo funciona mientras se desarrolla en el vientre materno y después de nacer. Por lo general, los bebés nacen con 46 cromosomas. Los bebés con síndrome de Down tienen una copia extra de uno de estos cromosomas: el cromosoma 21. El término médico de tener una copia extra de un cromosoma es ‘trisomía’. Al síndrome de Down también se lo llama trisomía 21. Esta copia extra cambia la manera en que se desarrollan el cuerpo y el cerebro del bebé, lo que puede causarle tanto problemas mentales como físicos.</value>
+  </data>
 </root>
