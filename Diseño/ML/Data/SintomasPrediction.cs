@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ML.Data
 {
-    class AgeRangePrediction
+    class SintomasPrediction
     {
         [ColumnName("PredictedLabel")]
         public string Label;

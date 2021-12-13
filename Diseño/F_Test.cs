@@ -11,14 +11,14 @@ using Diseño.Conexion;
 
 namespace Diseño
 {
-    public partial class F_TestCI : Form
+    public partial class F_Test : Form
     {
         Consulta consulta = new Consulta();
         List<Pregunta> preguntas;
         List<Alternativas> alternativas;
         int id;
         bool state;
-        public F_TestCI()
+        public F_Test()
         {
             InitializeComponent();
             SetPregunta(0);
@@ -189,7 +189,12 @@ namespace Diseño
 
         private void btnTerminar_Click(object sender, EventArgs e)
         {
+            consulta.reiniciarRecomendaciones();
             revisarTest();
+            consulta.updtTestStatus(true);
+            F_MenuPrincipal menuPrincipal = new F_MenuPrincipal(Utils.user);
+            menuPrincipal.ShowDialog();
+            this.Hide();
         }
         private int getNumPreguntas_LM()
         {

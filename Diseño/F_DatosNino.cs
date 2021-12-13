@@ -28,39 +28,31 @@ namespace Diseño
         private void button2_Click(object sender, EventArgs e)
         {
             ventanaPrincipal.Hide();
-            F_TestCI test_ci = new F_TestCI();
+            F_Test test_ci = new F_Test();
             test_ci.ShowDialog();
 
         }
         private void SetDatos()
         {
             Consulta consulta = new Consulta();
+
+            // verificar la disponibilidad del test
+            if (consulta.getTestStatus())
+                btnRealizarTest.Visible = false;
+
             // Datos físicos
             lblNombre.Text = consulta.getNombreNino();
             lblEdad.Text = Convert.ToString(consulta.getEdadNino()) + " Años";
 
-            string altura = Convert.ToString(consulta.getAlturaNino());
-            string peso = Convert.ToString(consulta.getPesoNino());
-            string sexo = consulta.getSexoNino();
+            string altura = Convert.ToString(consulta.getAlturaNino() + " cm");
+            string peso = Convert.ToString(consulta.getPesoNino() + " kg");
 
-            if (sexo == "m")
-            {
-                sexo = "Masculino";
-            } else if (sexo == "f")
-            {
-                sexo = "Femenino";
-            }
-            lblDatosFisicos.Text = "Altura: " + altura + "  Peso: " + peso + "  Sexo: " + sexo;
+            lblDatosFisicos.Text = "Altura: " + altura + "  Peso: " + peso;
 
             // Datos cognitivos
             lblIntLM.Text = "Inteligencia Lógico-Matemática: " + Convert.ToString(consulta.getIntLM()) + "%";
             lblIntES.Text = "Inteligencia Espacial: " + Convert.ToString(consulta.getIntES()) + "%";
             lblIntEM.Text = "Inteligencia Emocional: " + Convert.ToString(consulta.getIntEM()) + "%";
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
         }
     }
 }

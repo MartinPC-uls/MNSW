@@ -32,9 +32,61 @@ namespace Diseño
         {
             this.user = user;
             InitializeComponent();
+            establecerRecomendacionesSemanales();
+
             deshabilitarBotones();
             setNumRecomendaciones();
             openChildForm(new PanelBienvenida(this));
+            comprobarFecha();
+        }
+        private void establecerRecomendacionesSemanales()
+        {
+            Consulta consulta = new Consulta();
+            string todays_date = DateTime.Now.Year + "-" + DateTime.Now.Month + "-" + DateTime.Now.Day;
+            DateTime today = DateTime.Parse(todays_date);
+            string date_ultimaRecomendacion = consulta.getFechaRecomendacionSemanal();
+            if (date_ultimaRecomendacion != null && date_ultimaRecomendacion != DBNull.Value.ToString() && date_ultimaRecomendacion != "")
+            {
+                DateTime ultimaRecomendacion = DateTime.Parse(date_ultimaRecomendacion);
+                Console.WriteLine("Comparando " + todays_date + " y " + date_ultimaRecomendacion);
+                if (DateTime.Compare(today, ultimaRecomendacion) >= 0)
+                {
+                    consulta.updtFechaInicioRecomendacionSemanal();
+                    string recomendacionSemanal = consulta.getRecomendacionSemanal(); // recomendación aleatoria
+
+                    int peso = consulta.getPesoNino();
+                    int altura = consulta.getAlturaNino();
+                    int imc = peso / (altura ^ 2);
+                    if (imc >= 25 && imc < 30)
+                        imc = 1; // sobrepeso
+                    else if (imc >= 30)
+                        imc = 2; // obesidad
+
+                    if (imc == 1 || imc == 2)
+                    {
+                        string recomendacionSemanal_RelacionIMC = consulta.getRecomendacionSemanal_RelacionIMC(imc);
+                        consulta.addRecomendacion(Utils.user, recomendacionSemanal_RelacionIMC);
+                    }
+
+                    consulta.addRecomendacion(Utils.user, recomendacionSemanal);
+                }
+            }
+        }
+        private void comprobarFecha()
+        {
+            Consulta consulta = new Consulta();
+            string todays_date = DateTime.Now.Year + "-" + DateTime.Now.Month + "-" + DateTime.Now.Day;
+            DateTime today = DateTime.Parse(todays_date);
+            string ends_date = consulta.getTestDate("ed");
+            if (ends_date != null && ends_date != "" && ends_date != DBNull.Value.ToString())
+            {
+                DateTime end = DateTime.Parse(ends_date);
+                int result = DateTime.Compare(today, end);
+                if (result >= 0)
+                {
+                    consulta.updtTestRealizado();
+                }
+            }
         }
 
         private void BtnInformacion_Click(object sender, EventArgs e)

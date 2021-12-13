@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ML.Data
 {
-    class AgeRange
+    class Sintomas
     {  
         /*[LoadColumn(0)]
         public string Name;

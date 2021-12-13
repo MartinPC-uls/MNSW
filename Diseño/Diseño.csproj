@@ -172,8 +172,8 @@
     <Compile Include="F_Registro.Designer.cs">
       <DependentUpon>F_Registro.cs</DependentUpon>
     </Compile>
-    <Compile Include="ML\Data\AgeRange.cs" />
-    <Compile Include="ML\Data\AgeRangePrediction.cs" />
+    <Compile Include="ML\Data\Sintomas.cs" />
+    <Compile Include="ML\Data\SintomasPrediction.cs" />
     <Compile Include="ML\ML.cs" />
     <Compile Include="PanelRecomendaciones.cs">
       <SubType>Form</SubType>
@@ -191,11 +191,11 @@
     <Compile Include="R_Datos_Nino.Designer.cs">
       <DependentUpon>R_Datos_Nino.cs</DependentUpon>
     </Compile>
-    <Compile Include="F_TestCI.cs">
+    <Compile Include="F_Test.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="F_TestCI.Designer.cs">
-      <DependentUpon>F_TestCI.cs</DependentUpon>
+    <Compile Include="F_Test.Designer.cs">
+      <DependentUpon>F_Test.cs</DependentUpon>
     </Compile>
     <Compile Include="F_DatosNino.cs">
       <SubType>Form</SubType>
@@ -248,8 +248,8 @@
     <EmbeddedResource Include="R_Datos_Nino.resx">
       <DependentUpon>R_Datos_Nino.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="F_TestCI.resx">
-      <DependentUpon>F_TestCI.cs</DependentUpon>
+    <EmbeddedResource Include="F_Test.resx">
+      <DependentUpon>F_Test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F_DatosNino.resx">
       <DependentUpon>F_DatosNino.cs</DependentUpon>
@@ -273,7 +273,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="ML\Data\AgeRangeData03.csv" />
+    <None Include="ML\Data\SintomasData.csv" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

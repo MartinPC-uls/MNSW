@@ -1,7 +1,7 @@
 ﻿
 namespace Diseño
 {
-    partial class F_TestCI
+    partial class F_Test
     {
         /// <summary>
         /// Required designer variable.

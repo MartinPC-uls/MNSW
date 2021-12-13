@@ -33,6 +33,9 @@ namespace Diseño
             string sexo = txtSexo.Text;
 
             consulta.addNino(Utils.user, nombre, edad, altura, peso, sexo);
+            consulta.addUsuarioTablaTestsRealizados();
+            consulta.addFechaInicioRecomendacionSemanal();
+
             Utils.changePanel(new F_InfoBienvenida(this.menuPrincipal), this.menuPrincipal);
             
         }

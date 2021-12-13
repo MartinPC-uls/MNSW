@@ -42,10 +42,10 @@ namespace Diseño
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.lblIntLM = new System.Windows.Forms.Label();
-            this.lblIntES = new System.Windows.Forms.Label();
             this.lblIntEM = new System.Windows.Forms.Label();
+            this.lblIntES = new System.Windows.Forms.Label();
+            this.lblIntLM = new System.Windows.Forms.Label();
+            this.btnRealizarTest = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.fotoNino)).BeginInit();
             this.panelNombre.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -169,33 +169,23 @@ namespace Diseño
             this.panel5.Controls.Add(this.lblIntEM);
             this.panel5.Controls.Add(this.lblIntES);
             this.panel5.Controls.Add(this.lblIntLM);
-            this.panel5.Controls.Add(this.button2);
+            this.panel5.Controls.Add(this.btnRealizarTest);
             this.panel5.Location = new System.Drawing.Point(132, 278);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(493, 206);
             this.panel5.TabIndex = 8;
             // 
-            // button2
+            // lblIntEM
             // 
-            this.button2.Location = new System.Drawing.Point(168, 153);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(151, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "REALIZAR TEST";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // lblIntLM
-            // 
-            this.lblIntLM.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblIntLM.Font = new System.Drawing.Font("Roboto Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIntLM.Location = new System.Drawing.Point(0, 0);
-            this.lblIntLM.Name = "lblIntLM";
-            this.lblIntLM.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblIntLM.Size = new System.Drawing.Size(493, 24);
-            this.lblIntLM.TabIndex = 4;
-            this.lblIntLM.Text = "Inteligencia Lógico-Matemático:";
-            this.lblIntLM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblIntEM.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblIntEM.Font = new System.Drawing.Font("Roboto Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIntEM.Location = new System.Drawing.Point(0, 49);
+            this.lblIntEM.Name = "lblIntEM";
+            this.lblIntEM.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblIntEM.Size = new System.Drawing.Size(493, 27);
+            this.lblIntEM.TabIndex = 6;
+            this.lblIntEM.Text = "Inteligencia Emocional:";
+            this.lblIntEM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblIntES
             // 
@@ -209,17 +199,27 @@ namespace Diseño
             this.lblIntES.Text = "Inteligencia Espacial:";
             this.lblIntES.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblIntEM
+            // lblIntLM
             // 
-            this.lblIntEM.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblIntEM.Font = new System.Drawing.Font("Roboto Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIntEM.Location = new System.Drawing.Point(0, 49);
-            this.lblIntEM.Name = "lblIntEM";
-            this.lblIntEM.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblIntEM.Size = new System.Drawing.Size(493, 27);
-            this.lblIntEM.TabIndex = 6;
-            this.lblIntEM.Text = "Inteligencia Emocional:";
-            this.lblIntEM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblIntLM.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblIntLM.Font = new System.Drawing.Font("Roboto Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIntLM.Location = new System.Drawing.Point(0, 0);
+            this.lblIntLM.Name = "lblIntLM";
+            this.lblIntLM.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblIntLM.Size = new System.Drawing.Size(493, 24);
+            this.lblIntLM.TabIndex = 4;
+            this.lblIntLM.Text = "Inteligencia Lógico-Matemático:";
+            this.lblIntLM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnRealizarTest
+            // 
+            this.btnRealizarTest.Location = new System.Drawing.Point(168, 133);
+            this.btnRealizarTest.Name = "btnRealizarTest";
+            this.btnRealizarTest.Size = new System.Drawing.Size(151, 43);
+            this.btnRealizarTest.TabIndex = 3;
+            this.btnRealizarTest.Text = "REALIZAR TEST";
+            this.btnRealizarTest.UseVisualStyleBackColor = true;
+            this.btnRealizarTest.Click += new System.EventHandler(this.button2_Click);
             // 
             // F_DatosNino
             // 
@@ -261,7 +261,7 @@ namespace Diseño
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnRealizarTest;
         private System.Windows.Forms.Label lblDatosFisicos;
         private System.Windows.Forms.Label lblIntEM;
         private System.Windows.Forms.Label lblIntES;
