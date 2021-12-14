@@ -154,7 +154,7 @@ namespace Diseño
             if (!consulta.verificarNinoRegistrado())
             {
                 btnDatosNino.Visible = false;
-                btnDatosNino_.Visible = false;
+                //btnDatosNino_.Visible = false;
                 btnConsultarSintomas.Visible = false;
                 btnDatosUsuario.Visible = false;
             }

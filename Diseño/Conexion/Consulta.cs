@@ -15,7 +15,6 @@ namespace Diseño.Conexion
         {
             //cn.getConnection();
         }
-
         public bool comprobarUsuario(string usuario, string password)
         {
             using (var cn = new MySqlConnection(Connection.connString))
@@ -170,7 +169,7 @@ namespace Diseño.Conexion
             {
                 cn.Open();
                 //MySqlCommand cmd = cn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM testci_1_alternativas";
+                cmd.CommandText = "SELECT * FROM testci_1_alternativas ORDER BY id"; // cambio
 
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -247,7 +246,7 @@ namespace Diseño.Conexion
                 cn.Close();
             }
         }
-        public void addRecomendacion(string user, string recomendacion = "")
+        public void addRecomendacion(string user, string recomendacion = "0")
         {
             using (var cn = new MySqlConnection(Connection.connString))
             using (var cmd = cn.CreateCommand())

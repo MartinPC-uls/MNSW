@@ -87,7 +87,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(156, 54);
             this.label2.TabIndex = 9;
-            this.label2.Text = "Paso 2: El niño realiza el test de coeficiente intelectual";
+            this.label2.Text = "Paso 2: El niño realiza el test de cognitivo";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label3

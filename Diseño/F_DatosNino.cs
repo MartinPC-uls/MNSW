@@ -23,6 +23,8 @@ namespace Diseño
             this.ventanaPrincipal = ventanaPrincipal;
             InitializeComponent();
             SetDatos();
+            if (lblDiasRestantes.Text == "Faltan X dias para que el test cognitivo vuelva a estar disponible")
+                lblDiasRestantes.Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -65,7 +67,7 @@ namespace Diseño
                 DateTime _end = DateTime.Parse(end);
                 string dias = (_end - _today).TotalDays.ToString();
                 if (Convert.ToInt32(dias) > 0)
-                    lblDiasRestantes.Text = "Faltan " + dias + " para poder volver a realizar el test cognitivo.";
+                    lblDiasRestantes.Text = "Faltan " + dias + " dias para poder volver a realizar el test cognitivo.";
                 else
                     lblDiasRestantes.Text = "";
             }

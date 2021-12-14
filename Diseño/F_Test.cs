@@ -13,9 +13,14 @@ namespace Diseño
 {
     public partial class F_Test : Form
     {
+        // cuántas preguntas se seleccionan de cada tipo de pregunta
+        private static readonly int muestra = 5;
+
+
         Consulta consulta = new Consulta();
         List<Pregunta> preguntas;
         List<Alternativas> alternativas;
+        Pregunta pregunta_actual;
         int id;
         bool state;
         public F_Test()
@@ -31,8 +36,96 @@ namespace Diseño
             {
                 preguntas = consulta.addPreguntas();
                 state = true;
+
+                List<Pregunta> preguntas_LM = new List<Pregunta>();
+                List<Pregunta> preguntas_ES = new List<Pregunta>();
+                List<Pregunta> preguntas_EM = new List<Pregunta>();
+                for (int i = 0; i < preguntas.Count; i++)
+                {
+                    if (preguntas[i].tipo == "LM")
+                    {
+                        preguntas_LM.Add(preguntas[i]);
+                    }
+                    else if (preguntas[i].tipo == "ES")
+                    {
+                        preguntas_ES.Add(preguntas[i]);
+                    }
+                    else if (preguntas[i].tipo == "EM")
+                    {
+                        preguntas_EM.Add(preguntas[i]);
+                    }
+                }
+                List<Pregunta> _preguntas_LM = new List<Pregunta>();
+                List<Pregunta> _preguntas_ES = new List<Pregunta>();
+                List<Pregunta> _preguntas_EM = new List<Pregunta>();
+
+                // LM
+                int preguntasSeleccionadas = 0;
+                Random random = new Random();
+                int numGenerado = 0;
+                List<int> numeros = new List<int>();
+                while (preguntasSeleccionadas < muestra)
+                {
+                    numGenerado = random.Next(0, 16);
+                    if (!numeros.Contains(numGenerado))
+                    {
+                        numeros.Add(numGenerado);
+                        preguntasSeleccionadas++;
+                    }
+                }
+                foreach (int n in numeros)
+                {
+                    _preguntas_LM.Add(preguntas_LM[n]);
+                }
+
+                // ES
+                preguntasSeleccionadas = 0;
+                random = new Random();
+                numGenerado = 0;
+                numeros = new List<int>();
+                while (preguntasSeleccionadas < muestra)
+                {
+                    numGenerado = random.Next(0, 12);
+                    if (!numeros.Contains(numGenerado))
+                    {
+                        numeros.Add(numGenerado);
+                        preguntasSeleccionadas++;
+                    }
+                }
+                foreach (int n in numeros)
+                {
+                    _preguntas_ES.Add(preguntas_ES[n]);
+                }
+
+                // EM
+                preguntasSeleccionadas = 0;
+                random = new Random();
+                numGenerado = 0;
+                numeros = new List<int>();
+                while (preguntasSeleccionadas < muestra)
+                {
+                    numGenerado = random.Next(0, 8);
+                    if (!numeros.Contains(numGenerado))
+                    {
+                        numeros.Add(numGenerado);
+                        preguntasSeleccionadas++;
+                    }
+                }
+                foreach (int n in numeros)
+                {
+                    _preguntas_EM.Add(preguntas_EM[n]);
+                }
+
+                preguntas = new List<Pregunta>();
+                preguntas.AddRange(_preguntas_LM);
+                preguntas.AddRange(_preguntas_ES);
+                preguntas.AddRange(_preguntas_EM);
             }
+
+            
+
             lblPregunta.Text = preguntas[idPregunta].pregunta;
+            pregunta_actual = preguntas[idPregunta];
             if (preguntas[idPregunta].image != " " && preguntas[idPregunta].image != "")
             {
                 pbImagen.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + @"Resources\" + 
@@ -51,14 +144,15 @@ namespace Diseño
                 alternativas = consulta.addAlternativas();
                 state = true;
             }
-            a.Text = alternativas[idPregunta].a;
-            b.Text = alternativas[idPregunta].b;
-            c.Text = alternativas[idPregunta].c;
-            d.Text = alternativas[idPregunta].d;
-            e.Text = alternativas[idPregunta].e;
-            f.Text = alternativas[idPregunta].f;
-            g.Text = alternativas[idPregunta].g;
-            h.Text = alternativas[idPregunta].h;
+
+            a.Text = alternativas[pregunta_actual.id-1].a;
+            b.Text = alternativas[pregunta_actual.id-1].b;
+            c.Text = alternativas[pregunta_actual.id-1].c;
+            d.Text = alternativas[pregunta_actual.id-1].d;
+            e.Text = alternativas[pregunta_actual.id-1].e;
+            f.Text = alternativas[pregunta_actual.id-1].f;
+            g.Text = alternativas[pregunta_actual.id-1].g;
+            h.Text = alternativas[pregunta_actual.id-1].h;
 
             if (d.Text == " ") d.Visible = false; else d.Visible = true;
             if (e.Text == " ") e.Visible = false; else e.Visible = true;
@@ -153,7 +247,7 @@ namespace Diseño
             int puntaje_lm = 0;
             int puntaje_es = 0;
             int puntaje_em = 0;
-            int i = 0;
+            /*int i = 0;
             foreach (Alternativas _alternativas in this.alternativas)
             {
                 if (preguntas[i].tipo == "LM")
@@ -171,6 +265,31 @@ namespace Diseño
                 } else if (preguntas[i].tipo == "EM")
                 {
                     if (_alternativas.seleccionada == respuestasCorrectas[i].respuestaCorrecta)
+                    {
+                        puntaje_em++;
+                    }
+                }
+                i++;
+            }*/
+
+            int i = 0;
+            foreach (Pregunta pregunta in preguntas)
+            {
+                if (pregunta.tipo == "LM")
+                {
+                    if (alternativas[i].seleccionada == respuestasCorrectas[pregunta.id-1].respuestaCorrecta)
+                    {
+                        puntaje_lm++;
+                    }
+                } else if (pregunta.tipo == "ES")
+                {
+                    if (alternativas[i].seleccionada == respuestasCorrectas[pregunta.id-1].respuestaCorrecta)
+                    {
+                        puntaje_es++;
+                    }
+                } else if (pregunta.tipo == "EM")
+                {
+                    if (alternativas[i].seleccionada == respuestasCorrectas[pregunta.id-1].respuestaCorrecta)
                     {
                         puntaje_em++;
                     }

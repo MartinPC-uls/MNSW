@@ -31,7 +31,7 @@ namespace Diseño
         {
             Utils.changePanel(new F_Informacion(), menuPrincipal);
             menuPrincipal.btnDatosNino.Visible = true;
-            menuPrincipal.btnDatosNino_.Visible = true;
+            //menuPrincipal.btnDatosNino_.Visible = true;
             menuPrincipal.btnConsultarSintomas.Visible = true;
             menuPrincipal.btnDatosUsuario.Visible = true;
         }

@@ -33,7 +33,6 @@ namespace Diseño
             this.btnDatosUsuario = new System.Windows.Forms.Button();
             this.btnConsultarSintomas = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.btnDatosNino_ = new System.Windows.Forms.Button();
             this.btnDatosNino = new System.Windows.Forms.Button();
             this.btnInformacion = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -60,7 +59,6 @@ namespace Diseño
             this.panel1.Controls.Add(this.btnDatosUsuario);
             this.panel1.Controls.Add(this.btnConsultarSintomas);
             this.panel1.Controls.Add(this.btnSalir);
-            this.panel1.Controls.Add(this.btnDatosNino_);
             this.panel1.Controls.Add(this.btnDatosNino);
             this.panel1.Controls.Add(this.btnInformacion);
             this.panel1.Controls.Add(this.panel3);
@@ -77,7 +75,7 @@ namespace Diseño
             this.btnDatosUsuario.FlatAppearance.BorderSize = 0;
             this.btnDatosUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDatosUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDatosUsuario.Location = new System.Drawing.Point(0, 255);
+            this.btnDatosUsuario.Location = new System.Drawing.Point(0, 217);
             this.btnDatosUsuario.Name = "btnDatosUsuario";
             this.btnDatosUsuario.Size = new System.Drawing.Size(180, 38);
             this.btnDatosUsuario.TabIndex = 7;
@@ -91,7 +89,7 @@ namespace Diseño
             this.btnConsultarSintomas.FlatAppearance.BorderSize = 0;
             this.btnConsultarSintomas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConsultarSintomas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConsultarSintomas.Location = new System.Drawing.Point(0, 217);
+            this.btnConsultarSintomas.Location = new System.Drawing.Point(0, 179);
             this.btnConsultarSintomas.Name = "btnConsultarSintomas";
             this.btnConsultarSintomas.Size = new System.Drawing.Size(180, 38);
             this.btnConsultarSintomas.TabIndex = 6;
@@ -112,20 +110,6 @@ namespace Diseño
             this.btnSalir.Text = "Cerrar sesión";
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // btnDatosNino_
-            // 
-            this.btnDatosNino_.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDatosNino_.FlatAppearance.BorderSize = 0;
-            this.btnDatosNino_.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDatosNino_.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDatosNino_.Location = new System.Drawing.Point(0, 179);
-            this.btnDatosNino_.Name = "btnDatosNino_";
-            this.btnDatosNino_.Size = new System.Drawing.Size(180, 38);
-            this.btnDatosNino_.TabIndex = 4;
-            this.btnDatosNino_.Text = "Realize el test";
-            this.btnDatosNino_.UseVisualStyleBackColor = true;
-            this.btnDatosNino_.Click += new System.EventHandler(this.BtnDatosNino_Click);
             // 
             // btnDatosNino
             // 
@@ -288,7 +272,6 @@ namespace Diseño
         private System.Windows.Forms.Panel panel3;
         public System.Windows.Forms.Button btnDatosNino;
         public System.Windows.Forms.Panel panelPrincipal;
-        public System.Windows.Forms.Button btnDatosNino_;
         public System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.PictureBox pictureBox2;
         private GradientPanel gradientPanel1;

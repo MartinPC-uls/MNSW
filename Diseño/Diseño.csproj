@@ -328,6 +328,8 @@
     <None Include="Resources\notification.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\niña_sd.jpg" />
+    <None Include="Resources\nina_sonriente_con_sindrome_de_down.jpg" />
     <EmbeddedResource Include="Resources\minimize_icon.png" />
     <EmbeddedResource Include="Resources\close_icon1.png" />
     <Content Include="Resources\es_1.jpg" />

@@ -62,8 +62,7 @@ namespace Diseño
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(270, 153);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Podrás realizar tests de coeficiente intelectual y consultar en caso de posibles " +
-    "enfermedades";
+            this.label1.Text = "Podrás realizar tests cognitivos y consultar en caso de posibles enfermedades";
             // 
             // label2
             // 
