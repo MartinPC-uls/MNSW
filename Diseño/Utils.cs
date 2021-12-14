@@ -10,6 +10,14 @@ namespace Diseño
     class Utils
     {
         public static string user = "";
+        public static string nombre_nino = "";
+        public static string sexo_nino = "";
+        public static int edad_nino = 0;
+        public static int peso_nino = 0;
+        public static int altura_nino = 0;
+        public static int int_lm = 0;
+        public static int int_es = 0;
+        public static int int_em = 0;
         public static void changePanel(Form next, F_MenuPrincipal menuPrincipal)
         {
             Form activeForm = null;

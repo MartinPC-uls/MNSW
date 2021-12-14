@@ -46,6 +46,7 @@ namespace Diseño
             this.lblIntES = new System.Windows.Forms.Label();
             this.lblIntLM = new System.Windows.Forms.Label();
             this.btnRealizarTest = new System.Windows.Forms.Button();
+            this.lblDiasRestantes = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.fotoNino)).BeginInit();
             this.panelNombre.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -166,6 +167,7 @@ namespace Diseño
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.lblDiasRestantes);
             this.panel5.Controls.Add(this.lblIntEM);
             this.panel5.Controls.Add(this.lblIntES);
             this.panel5.Controls.Add(this.lblIntLM);
@@ -221,6 +223,16 @@ namespace Diseño
             this.btnRealizarTest.UseVisualStyleBackColor = true;
             this.btnRealizarTest.Click += new System.EventHandler(this.button2_Click);
             // 
+            // lblDiasRestantes
+            // 
+            this.lblDiasRestantes.Font = new System.Drawing.Font("Roboto Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDiasRestantes.Location = new System.Drawing.Point(-3, 107);
+            this.lblDiasRestantes.Name = "lblDiasRestantes";
+            this.lblDiasRestantes.Size = new System.Drawing.Size(493, 23);
+            this.lblDiasRestantes.TabIndex = 9;
+            this.lblDiasRestantes.Text = "Faltan X dias para que el test cognitivo vuelva a estar disponible";
+            this.lblDiasRestantes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // F_DatosNino
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -266,5 +278,6 @@ namespace Diseño
         private System.Windows.Forms.Label lblIntEM;
         private System.Windows.Forms.Label lblIntES;
         private System.Windows.Forms.Label lblIntLM;
+        private System.Windows.Forms.Label lblDiasRestantes;
     }
 }

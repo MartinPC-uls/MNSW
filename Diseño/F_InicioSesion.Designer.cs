@@ -35,7 +35,6 @@ namespace Diseño
             this.healthIcon_green = new System.Windows.Forms.PictureBox();
             this.healthIcon_red = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.errorMessage = new System.Windows.Forms.Label();
             this.btnRegistro = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -96,7 +95,6 @@ namespace Diseño
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.errorMessage);
             this.panel4.Controls.Add(this.btnRegistro);
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Controls.Add(this.pictureBox1);
@@ -110,16 +108,6 @@ namespace Diseño
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(282, 379);
             this.panel4.TabIndex = 4;
-            // 
-            // errorMessage
-            // 
-            this.errorMessage.AutoSize = true;
-            this.errorMessage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.errorMessage.Location = new System.Drawing.Point(60, 259);
-            this.errorMessage.Name = "errorMessage";
-            this.errorMessage.Size = new System.Drawing.Size(52, 19);
-            this.errorMessage.TabIndex = 8;
-            this.errorMessage.Text = "label2";
             // 
             // btnRegistro
             // 
@@ -265,7 +253,6 @@ namespace Diseño
         private System.Windows.Forms.Button btnRegistro;
         private System.Windows.Forms.PictureBox healthIcon_red;
         private System.Windows.Forms.PictureBox healthIcon_green;
-        private System.Windows.Forms.Label errorMessage;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
     }

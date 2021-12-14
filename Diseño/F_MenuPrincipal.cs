@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
 using Diseño.Conexion;
+using System.Threading;
 
 namespace Diseño
 {
@@ -32,13 +33,39 @@ namespace Diseño
         {
             this.user = user;
             InitializeComponent();
-            establecerRecomendacionesSemanales();
+            
 
             deshabilitarBotones();
-            setNumRecomendaciones();
-            openChildForm(new PanelBienvenida(this));
-            comprobarFecha();
+
+            setAll();
+
+            
         }
+        private void setAll()
+        {
+            establecerRecomendacionesSemanales();
+            setNumRecomendaciones();
+            comprobarFecha();
+            openChildForm(new PanelBienvenida(this));
+            comprobarFechaActualizacionDatos();
+        }
+        private void comprobarFechaActualizacionDatos()
+        {
+            try
+            {
+                Consulta consulta = new Consulta();
+                string today = DateTime.Now.Year + "-" + DateTime.Now.Month + "-" + DateTime.Now.Day;
+                DateTime _today = DateTime.Parse(today);
+                string fechaActualizarDatos = consulta.getFechaRecordatorioCambiarDatos();
+                DateTime _fechaActualizarDatos = DateTime.Parse(fechaActualizarDatos);
+                if (DateTime.Compare(_today, _fechaActualizarDatos) >= 0)
+                {
+                    openChildForm(new F_Informacion());
+                }
+            }
+            catch (Exception e) { }
+        }
+
         private void establecerRecomendacionesSemanales()
         {
             Consulta consulta = new Consulta();
@@ -53,10 +80,10 @@ namespace Diseño
                 {
                     consulta.updtFechaInicioRecomendacionSemanal();
                     string recomendacionSemanal = consulta.getRecomendacionSemanal(); // recomendación aleatoria
-
+                    /*
                     int peso = consulta.getPesoNino();
-                    int altura = consulta.getAlturaNino();
-                    int imc = peso / (altura ^ 2);
+                    int altura = consulta.getAlturaNino();*/
+                    int imc = Utils.peso_nino / (Utils.altura_nino ^ 2);
                     if (imc >= 25 && imc < 30)
                         imc = 1; // sobrepeso
                     else if (imc >= 30)

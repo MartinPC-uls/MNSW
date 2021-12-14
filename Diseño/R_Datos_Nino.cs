@@ -22,6 +22,7 @@ namespace Diseño
         {
             this.menuPrincipal = menuPrincipal;
             InitializeComponent();
+            setDatos();
         }
 
         private void btnSiguiente_Click(object sender, EventArgs e)
@@ -32,12 +33,41 @@ namespace Diseño
             int peso = int.Parse(txtPeso.Text, NumberStyles.AllowLeadingWhite | NumberStyles.AllowTrailingWhite);
             string sexo = txtSexo.Text;
 
-            consulta.addNino(Utils.user, nombre, edad, altura, peso, sexo);
-            consulta.addUsuarioTablaTestsRealizados();
-            consulta.addFechaInicioRecomendacionSemanal();
+            int state = consulta.addNino(Utils.user, nombre, edad, altura, peso, sexo);
+            if (state == 1)
+            { // se añadió un niño por primera vez
+                consulta.addUsuarioTablaTestsRealizados();
+                consulta.addFechaInicioRecomendacionSemanal();
+            }
 
-            Utils.changePanel(new F_InfoBienvenida(this.menuPrincipal), this.menuPrincipal);
+            Utils.nombre_nino = nombre;
+            Utils.edad_nino = edad;
+            Utils.altura_nino = altura;
+            Utils.peso_nino = peso;
+            Utils.sexo_nino = sexo;
+
+            consulta.updtFechaInicioCambiarDatos(); // establece la fecha en 30 días para realizar cambios nuevamente.
+
+            if (state == 1)
+                Utils.changePanel(new F_InfoBienvenida(this.menuPrincipal), this.menuPrincipal);
+            else if (state == 2) // en caso que los datos sean de actualizar
+                Utils.changePanel(new F_Informacion(), this.menuPrincipal);
             
+        }
+        public void setDatos()
+        {
+            try
+            {
+                txtNombre.Text = Utils.nombre_nino;
+                txtEdad.Text = Convert.ToString(Utils.edad_nino);
+                txtAltura.Text = Convert.ToString(Utils.altura_nino);
+                txtPeso.Text = Convert.ToString(Utils.peso_nino);
+                if (Utils.sexo_nino == "f")
+                    txtSexo.Text = "f";
+                else if (Utils.sexo_nino == "m")
+                    txtSexo.Text = "m";
+            }
+            catch (Exception e) { }
         }
     }
 }

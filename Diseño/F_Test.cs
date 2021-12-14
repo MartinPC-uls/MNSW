@@ -178,11 +178,15 @@ namespace Diseño
                 i++;
             }
 
-            double _puntaje_lm = ((double)puntaje_lm / (double)getNumPreguntas_LM())*100;
-            double _puntaje_es = ((double)puntaje_es / (double)getNumPreguntas_ES())*100;
-            double _puntaje_em = ((double)puntaje_em / (double)getNumPreguntas_EM())*100;
+            double _puntaje_lm = ((double)puntaje_lm / (double)getNumPreguntas_LM()) * 100;
+            double _puntaje_es = ((double)puntaje_es / (double)getNumPreguntas_ES()) * 100;
+            double _puntaje_em = ((double)puntaje_em / (double)getNumPreguntas_EM()) * 100;
 
             consulta.registrarPuntajesNino(Utils.user, (int)_puntaje_lm, (int)_puntaje_es, (int)_puntaje_em);
+
+            Utils.int_lm = (int)_puntaje_lm;
+            Utils.int_es = (int)_puntaje_es;
+            Utils.int_em = (int)_puntaje_em;
 
             salidaRecomendacion((int)_puntaje_lm, (int)_puntaje_es, (int)_puntaje_em);
         }

@@ -37,22 +37,38 @@ namespace Diseño
             Consulta consulta = new Consulta();
 
             // verificar la disponibilidad del test
-            if (consulta.getTestStatus())
+            bool status = false;
+            if (consulta.getTestStatus()) {
                 btnRealizarTest.Visible = false;
+                status = true;
+            }
 
             // Datos físicos
-            lblNombre.Text = consulta.getNombreNino();
-            lblEdad.Text = Convert.ToString(consulta.getEdadNino()) + " Años";
+            lblNombre.Text = Utils.nombre_nino;
+            lblEdad.Text = Convert.ToString(Utils.edad_nino) + " Años";
 
-            string altura = Convert.ToString(consulta.getAlturaNino() + " cm");
-            string peso = Convert.ToString(consulta.getPesoNino() + " kg");
+            string altura = Convert.ToString(Utils.altura_nino + " cm");
+            string peso = Convert.ToString(Utils.peso_nino + " kg");
 
             lblDatosFisicos.Text = "Altura: " + altura + "  Peso: " + peso;
 
             // Datos cognitivos
-            lblIntLM.Text = "Inteligencia Lógico-Matemática: " + Convert.ToString(consulta.getIntLM()) + "%";
-            lblIntES.Text = "Inteligencia Espacial: " + Convert.ToString(consulta.getIntES()) + "%";
-            lblIntEM.Text = "Inteligencia Emocional: " + Convert.ToString(consulta.getIntEM()) + "%";
+            lblIntLM.Text = "Inteligencia Lógico-Matemática: " + Convert.ToString(Utils.int_lm) + "%";
+            lblIntES.Text = "Inteligencia Espacial: " + Convert.ToString(Utils.int_es) + "%";
+            lblIntEM.Text = "Inteligencia Emocional: " + Convert.ToString(Utils.int_em) + "%";
+
+            if (status)
+            {
+                string today = DateTime.Now.Year + "-" + DateTime.Now.Month + "-" + DateTime.Now.Day;
+                string end = consulta.getTestDate("ed");
+                DateTime _today = DateTime.Parse(today);
+                DateTime _end = DateTime.Parse(end);
+                string dias = (_end - _today).TotalDays.ToString();
+                if (Convert.ToInt32(dias) > 0)
+                    lblDiasRestantes.Text = "Faltan " + dias + " para poder volver a realizar el test cognitivo.";
+                else
+                    lblDiasRestantes.Text = "";
+            }
         }
     }
 }

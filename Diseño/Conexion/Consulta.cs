@@ -13,601 +13,960 @@ namespace Diseño.Conexion
 
         public Consulta()
         {
-            cn.getConnection();
+            //cn.getConnection();
         }
 
         public bool comprobarUsuario(string usuario, string password)
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "SELECT * FROM usuarios WHERE email = '" + usuario + "' AND password = '" + password + "'";
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                cn.close();
-                return true;
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM usuarios WHERE email = '" + usuario + "' AND password = '" + password + "'";
+                using (var reader = cmd.ExecuteReader())
+                {
+                    //MySqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        cn.Close();
+                        return true;
+                    }
+                    cn.Close();
+                    return false;
+                }
             }
-            cn.close();
-            return false;
         }
         public bool verificarUsuario(string usuario)
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "SELECT * FROM usuarios WHERE email = '" + usuario + "'";
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                cn.close();
-                return true;
-            }
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM usuarios WHERE email = '" + usuario + "'";
+                using (var reader = cmd.ExecuteReader())
+                {
+                    //MySqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        cn.Close();
+                        return true;
+                    }
+                }
 
-            cn.close();
-            return false;
+                cn.Close();
+                return false;
+            }
         }
         public void agregarUsuario(string usuario, string password)
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "INSERT INTO usuarios(email, password) VALUES (@email, @password)";
-            cmd.Parameters.AddWithValue("@email", usuario);
-            cmd.Parameters.AddWithValue("@password", password);
-            cmd.ExecuteNonQuery();
-            cn.close();
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
+            {
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "INSERT INTO usuarios(email, password) VALUES (@email, @password)";
+                cmd.Parameters.AddWithValue("@email", usuario);
+                cmd.Parameters.AddWithValue("@password", password);
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
         }
-        public void addNino(string email, string nombre, int edad, int altura, int peso, string sexo)
+        public int addNino(string email, string nombre, int edad, int altura, int peso, string sexo)
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "INSERT INTO nino_usuario(email, nombre, edad, altura, peso, sexo)" +
-                " VALUES(@email, @nombre, @edad, @altura, @peso, @sexo)";
-            cmd.Parameters.AddWithValue("@email", email);
-            cmd.Parameters.AddWithValue("@nombre", nombre);
-            cmd.Parameters.AddWithValue("@edad", edad);
-            cmd.Parameters.AddWithValue("@altura", altura);
-            cmd.Parameters.AddWithValue("@peso", peso);
-            cmd.Parameters.AddWithValue("@sexo", sexo);
-            cmd.ExecuteNonQuery();
-            cn.close();
+            // 0 = error; 1 = NIÑO NUEVO; 2 = UPDATE NIÑO
+            int state = 0;
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
+            {
+                try
+                {
+                    cn.Open();
+                    //MySqlCommand cmd = cn.CreateCommand();
+                    cmd.CommandText = "INSERT INTO nino_usuario(email, nombre, edad, altura, peso, sexo)" +
+                        " VALUES(@email, @nombre, @edad, @altura, @peso, @sexo)";
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@nombre", nombre);
+                    cmd.Parameters.AddWithValue("@edad", edad);
+                    cmd.Parameters.AddWithValue("@altura", altura);
+                    cmd.Parameters.AddWithValue("@peso", peso);
+                    cmd.Parameters.AddWithValue("@sexo", sexo);
+                    cmd.ExecuteNonQuery();
+                    cn.Close();
+                    state = 1;
+                } catch (MySqlException e)
+                {
+                    var temp = cn.State.ToString();
+                    if (cn.State == System.Data.ConnectionState.Open && temp == "Open")
+                    {
+                        cn.Close();
+                        cn.Open();
+                    }
+                    else
+                        cn.Open();
+                    cmd.CommandText = "UPDATE nino_usuario SET nombre = '" + nombre + "', edad = " + edad +
+                        ", altura = " + altura + ", peso = " + peso + ", sexo = " + sexo + " WHERE email = '" + email + "'";
+                    cmd.ExecuteNonQuery();
+                    cn.Close();
+                    state = 2;
+                }
+            }
+            return state;
         }
         public List<string> addSintomas(List<string> sintomas)
         {
-            // Raro ???????
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "SELECT sintoma FROM sintomas";
-            MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                sintomas.Add(reader.GetString(0));
+                // Raro ???????
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "SELECT sintoma FROM sintomas";
+                using (var reader = cmd.ExecuteReader())
+                {
+                    //MySqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        sintomas.Add(reader.GetString(0));
+                    }
+                }
+                cn.Close();
+                return sintomas;
             }
-            cn.close();
-            return sintomas;
         }
         public List<Pregunta> addPreguntas()
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "SELECT * FROM testci_1_preguntas";
-            MySqlDataReader reader = cmd.ExecuteReader();
-            List<Pregunta> preguntas = new List<Pregunta>();
-            while (reader.Read())
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                if (reader.GetString(1) == " ")
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM testci_1_preguntas";
+                using (var reader = cmd.ExecuteReader())
                 {
-                    preguntas.Add(new Pregunta(reader.GetInt16(0), reader.GetString(2), reader.GetString(3)));
+                    //MySqlDataReader reader = cmd.ExecuteReader();
+                    List<Pregunta> preguntas = new List<Pregunta>();
+                    while (reader.Read())
+                    {
+                        if (reader.GetString(1) == " ")
+                        {
+                            preguntas.Add(new Pregunta(reader.GetInt16(0), reader.GetString(2), reader.GetString(3)));
+                        }
+                        else
+                        {
+                            preguntas.Add(new Pregunta(reader.GetInt16(0), reader.GetString(2), reader.GetString(3), reader.GetString(1)));
+                        }
+                    }
+                    return preguntas;
                 }
-                else
-                {
-                    preguntas.Add(new Pregunta(reader.GetInt16(0), reader.GetString(2), reader.GetString(3), reader.GetString(1)));
-                }
+                cn.Close();
             }
-            cn.close();
-            return preguntas;
         }
         public List<Alternativas> addAlternativas()
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "SELECT * FROM testci_1_alternativas";
-            MySqlDataReader reader = cmd.ExecuteReader();
-            List<Alternativas> alternativas = new List<Alternativas>();
-            while (reader.Read())
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                alternativas.Add(new Alternativas(reader.GetInt16(0), reader.GetString(1), reader.GetString(2),
-                    reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6),
-                    reader.GetString(7), reader.GetString(8)));
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM testci_1_alternativas";
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    //MySqlDataReader reader = cmd.ExecuteReader();
+                    List<Alternativas> alternativas = new List<Alternativas>();
+                    while (reader.Read())
+                    {
+                        alternativas.Add(new Alternativas(reader.GetInt16(0), reader.GetString(1), reader.GetString(2),
+                            reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6),
+                            reader.GetString(7), reader.GetString(8)));
+                    }
+                    cn.Close();
+                    return alternativas;
+                }
             }
-            cn.close();
-            return alternativas;
         }
         public List<RespuestasCorrectas> addRespuestasCorrectas()
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "SELECT * FROM testci_1_respuesta";
-            MySqlDataReader reader = cmd.ExecuteReader();
-            List<RespuestasCorrectas> respuestasCorrectas = new List<RespuestasCorrectas>();
-            while (reader.Read())
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                respuestasCorrectas.Add(new RespuestasCorrectas(reader.GetInt16(0), reader.GetString(1)));
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM testci_1_respuesta";
+                using (var reader = cmd.ExecuteReader())
+                {
+                    //MySqlDataReader reader = cmd.ExecuteReader();
+                    List<RespuestasCorrectas> respuestasCorrectas = new List<RespuestasCorrectas>();
+                    while (reader.Read())
+                    {
+                        respuestasCorrectas.Add(new RespuestasCorrectas(reader.GetInt16(0), reader.GetString(1)));
+                    }
+                    cn.Close();
+                    return respuestasCorrectas;
+                }
             }
-            cn.close();
-            return respuestasCorrectas;
         }
         public void registrarPuntajesNino(string email, int ptj_lm, int ptj_es, int ptj_em)
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            try
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                cmd.CommandText = "INSERT INTO ninos_puntajes(email, lm, es, em)" +
-                    " VALUES(@email, @lm, @es, @em)";
-                cmd.Parameters.AddWithValue("@email", email);
-                cmd.Parameters.AddWithValue("@lm", ptj_lm);
-                cmd.Parameters.AddWithValue("@es", ptj_es);
-                cmd.Parameters.AddWithValue("@em", ptj_em);
-                cmd.ExecuteNonQuery();
-            } catch (MySqlException e)
-            {
-                cmd.CommandText = "UPDATE ninos_puntajes SET lm = " + ptj_lm + ", es = " + ptj_es + ", em = " + ptj_em
-                    + " WHERE email = '" + email + "'";
-                cmd.ExecuteNonQuery();
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                try
+                {
+                    cmd.CommandText = "INSERT INTO ninos_puntajes(email, lm, es, em)" +
+                        " VALUES(@email, @lm, @es, @em)";
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@lm", ptj_lm);
+                    cmd.Parameters.AddWithValue("@es", ptj_es);
+                    cmd.Parameters.AddWithValue("@em", ptj_em);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (MySqlException e)
+                {
+                    cmd.CommandText = "UPDATE ninos_puntajes SET lm = " + ptj_lm + ", es = " + ptj_es + ", em = " + ptj_em
+                        + " WHERE email = '" + email + "'";
+                    cmd.ExecuteNonQuery();
+                }
+                cn.Close();
             }
-            cn.close();
         }
         public void reiniciarRecomendaciones()
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "UPDATE recomendaciones SET r1 = 0, r2 = 0, r3 = 0, r4 = 0, r5 = 0, r6 = 0, r7 = 0, r8 = 0," +
-                " r9 = 0, r10 = 0, r11 = 0, r12 = 0, r13 = 0, r14 = 0, r15 = 0 WHERE email = '" + Utils.user + "'";
-            cmd.ExecuteNonQuery();
-            cn.close();
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
+            {
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "UPDATE recomendaciones SET r1 = 0, r2 = 0, r3 = 0, r4 = 0, r5 = 0, r6 = 0, r7 = 0, r8 = 0," +
+                    " r9 = 0, r10 = 0, r11 = 0, r12 = 0, r13 = 0, r14 = 0, r15 = 0 WHERE email = '" + Utils.user + "'";
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
         }
         public void addRecomendacion(string user, string recomendacion = "")
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "SELECT * FROM recomendaciones WHERE email = '" + user + "'";
-            MySqlDataReader reader = cmd.ExecuteReader();
-
-            string text = "INSERT recomendaciones SET email = '" + user + "'";
-
-            while (reader.Read())
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                for (int i = 1; i <= 15; i++)
+                cn.Open();
+                string text = "";
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM recomendaciones WHERE email = '" + user + "'";
+                using (var reader = cmd.ExecuteReader())
                 {
-                    if (reader.GetString(i) == "0")
+                    //MySqlDataReader reader = cmd.ExecuteReader();
+
+                    text = "INSERT recomendaciones SET email = '" + user + "'";
+
+                    while (reader.Read())
                     {
-                        if (recomendacion == "")
+                        for (int i = 1; i <= 15; i++)
                         {
-                            recomendacion = "0";
+                            if (reader.GetString(i) == "0")
+                            {
+                                if (recomendacion == "")
+                                {
+                                    recomendacion = "0";
+                                }
+                                text = "UPDATE recomendaciones SET r" + i + " = '" + recomendacion + "'" +
+                                    " WHERE email = '" + user + "'";
+                                break;
+                            }
                         }
-                        text = "UPDATE recomendaciones SET r" + i + " = '" + recomendacion + "'" +
-                            " WHERE email = '" + user + "'";
-                        break;
+                    }
+                }
+                cn.Close();
+
+                using (var cn2 = new MySqlConnection(Connection.connString))
+                using (var cmd2 = cn2.CreateCommand())
+                {
+                    try
+                    {
+                        cn2.Open();
+                        //MySqlCommand cmd2 = cn.CreateCommand();
+                        cmd2.CommandText = text;
+                        cmd2.ExecuteNonQuery();
+                        cn2.Close();
+                    } catch (Exception e)
+                    {
+                        var temp = cn2.State.ToString();
+                        if (cn2.State == System.Data.ConnectionState.Open && temp == "Open")
+                        {
+                            cn2.Close();
+                        }
                     }
                 }
             }
-            cn.close();
-
-            cn.open();
-            MySqlCommand cmd2 = cn.CreateCommand();
-            cmd2.CommandText = text;
-            cmd2.ExecuteNonQuery();
-            cn.close();
 
         }
 
         public void addTestStatus(bool value = false)
         {
-            cn.open();
-            int v = 0;
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "INSERT INTO tests_realizados(email, test_realizado)" +
-                " VALUES(@email, @test_realizado)";
-            cmd.Parameters.AddWithValue("@email", Utils.user);
-            if (value)
-                v = 1;
-            cmd.Parameters.AddWithValue("@test_realizado", v);
-            cmd.ExecuteNonQuery();
-            cn.close();
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
+            {
+                cn.Open();
+                int v = 0;
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "INSERT INTO tests_realizados(email, test_realizado)" +
+                    " VALUES(@email, @test_realizado)";
+                cmd.Parameters.AddWithValue("@email", Utils.user);
+                if (value)
+                    v = 1;
+                cmd.Parameters.AddWithValue("@test_realizado", v);
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
         }
         public void updtTestStatus(bool value = false)
         {
-            cn.open();
-            int v = 0;
-            MySqlCommand cmd = cn.CreateCommand();
-            if (value)
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                string date = DateTime.Now.Year + "-" + DateTime.Now.Month + "-" + DateTime.Now.Day;
-                DateTime date_start = DateTime.Parse(date);
-                DateTime date_end = date_start.AddDays(30);
-                string _data_end = date_end.Year + "-" + date_end.Month + "-" + date_end.Day;
-                cmd.CommandText = "UPDATE tests_realizados SET test_realizado = 1, date = '" + date
-                    + "', date_final = '" + _data_end + "' WHERE email = '" + Utils.user + "'";
+                cn.Open();
+                int v = 0;
+                //MySqlCommand cmd = cn.CreateCommand();
+                if (value)
+                {
+                    string date = DateTime.Now.Year + "-" + DateTime.Now.Month + "-" + DateTime.Now.Day;
+                    DateTime date_start = DateTime.Parse(date);
+                    DateTime date_end = date_start.AddDays(30);
+                    string _data_end = date_end.Year + "-" + date_end.Month + "-" + date_end.Day;
+                    cmd.CommandText = "UPDATE tests_realizados SET test_realizado = 1, date = '" + date
+                        + "', date_final = '" + _data_end + "' WHERE email = '" + Utils.user + "'";
+                }
+                else
+                {
+                    cmd.CommandText = "UPDATE tests_realizados SET test_realizado = 0, date = " + DBNull.Value +
+                        " WHERE email = '" + Utils.user + "'";
+                }
+                cmd.ExecuteNonQuery();
+                cn.Close();
             }
-            else
-            {
-                cmd.CommandText = "UPDATE tests_realizados SET test_realizado = 0, date = " + DBNull.Value +
-                    " WHERE email = '" + Utils.user + "'";
-            }
-            cmd.ExecuteNonQuery();
-            cn.close();
         }
         public string getTestDate(string sd_ed)
         {
-            // sd = start date
-            // ed = end date
-            try
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                cn.open();
-                MySqlCommand cmd = cn.CreateCommand();
-                string s = "";
-                if (sd_ed == "sd")
-                    s = "date";
-                else if (sd_ed == "ed")
-                    s = "date_final";
-                cmd.CommandText = "SELECT " + s + " FROM tests_realizados WHERE email = '" + Utils.user + "'";
-                MySqlDataReader reader = cmd.ExecuteReader();
-                string _s = null;
-                if (reader.Read())
+                // sd = start date
+                // ed = end date
+                try
                 {
-                    _s = reader.GetString(0);
+                    cn.Open();
+                    //MySqlCommand cmd = cn.CreateCommand();
+                    string s = "";
+                    if (sd_ed == "sd")
+                        s = "date";
+                    else if (sd_ed == "ed")
+                        s = "date_final";
+                    cmd.CommandText = "SELECT " + s + " FROM tests_realizados WHERE email = '" + Utils.user + "'";
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        //MySqlDataReader reader = cmd.ExecuteReader();
+                        string _s = null;
+                        if (reader.Read())
+                        {
+                            _s = reader.GetString(0);
+                        }
+                        cn.Close();
+                        return _s;
+                    }
                 }
-                cn.close();
-                return _s;
-            } catch (Exception e)
-            {
-                return null;
+                catch (Exception e)
+                {
+                    return null;
+                }
             }
         }
         public void updtTestRealizado()
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "UPDATE tests_realizados SET test_realizado = 0, date = '" + DBNull.Value + "', date_final = '" +
-                DBNull.Value + "' WHERE email = '" + Utils.user + "'";
-            cmd.ExecuteNonQuery();
-            cn.close();
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
+            {
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "UPDATE tests_realizados SET test_realizado = 0, date = '" + DBNull.Value + "', date_final = '" +
+                    DBNull.Value + "' WHERE email = '" + Utils.user + "'";
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
         }
         public void addFechaInicioRecomendacionSemanal()
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            string todays_date = DateTime.Now.Year + "-" + DateTime.Now.Month + "-" + DateTime.Now.Day;
-            DateTime today = DateTime.Parse(todays_date);
-            today.AddDays(7);
-            string s = today.Year + "-" + today.Month + "-" + today.Day;
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
+            {
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                string todays_date = DateTime.Now.Year + "-" + DateTime.Now.Month + "-" + DateTime.Now.Day;
+                DateTime today = DateTime.Parse(todays_date);
+                today.AddDays(7);
+                string s = today.Year + "-" + today.Month + "-" + today.Day;
 
-            cmd.CommandText = "UPDATE usuarios SET recomendacion_recibida = '" + s +
-                "' WHERE email = '" + Utils.user + "'";
+                cmd.CommandText = "UPDATE usuarios SET recomendacion_recibida = '" + s +
+                    "' WHERE email = '" + Utils.user + "'";
 
-            cmd.ExecuteNonQuery();
-            cn.close();
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
         }
         public string getFechaRecomendacionSemanal()
         {
-            cn.open();
-            try
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                MySqlCommand cmd = cn.CreateCommand();
-                cmd.CommandText = "SELECT recomendacion_recibida FROM usuarios WHERE email = '" + Utils.user + "'";
-                MySqlDataReader reader = cmd.ExecuteReader();
-                string s;
-                if (reader.Read())
+                cn.Open();
+                try
                 {
-                    s = reader.GetString(0);
-                    cn.close();
-                    return s;
+                    //MySqlCommand cmd = cn.CreateCommand();
+                    cmd.CommandText = "SELECT recomendacion_recibida FROM usuarios WHERE email = '" + Utils.user + "'";
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        //MySqlDataReader reader = cmd.ExecuteReader();
+                        string s;
+                        if (reader.Read())
+                        {
+                            s = reader.GetString(0);
+                            cn.Close();
+                            return s;
+                        }
+                        cn.Close();
+                        return null;
+                    }
                 }
-                cn.close();
-                return null;
-            }
-            catch (Exception e)
-            {
-                return null;
+                catch (Exception e)
+                {
+                    return null;
+                }
             }
         }
         public void updtFechaInicioRecomendacionSemanal()
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            string todays_date = DateTime.Now.Year + "-" + DateTime.Now.Month + "-" + DateTime.Now.Day;
-            DateTime today = DateTime.Parse(todays_date);
-            DateTime nextWeek = today.AddDays(7);
-            string s = nextWeek.Year + "-" + nextWeek.Month + "-" + nextWeek.Day;
-            cmd.CommandText = "UPDATE usuarios SET recomendacion_recibida = '" + s + "' WHERE email = '" + Utils.user + "'";
-            cmd.ExecuteNonQuery();
-            cn.close();
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
+            {
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                string todays_date = DateTime.Now.Year + "-" + DateTime.Now.Month + "-" + DateTime.Now.Day;
+                DateTime today = DateTime.Parse(todays_date);
+                DateTime nextWeek = today.AddDays(7);
+                string s = nextWeek.Year + "-" + nextWeek.Month + "-" + nextWeek.Day;
+                cmd.CommandText = "UPDATE usuarios SET recomendacion_recibida = '" + s + "' WHERE email = '" + Utils.user + "'";
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
         }
         public string getRecomendacionSemanal_RelacionIMC(int imc)
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "SELECT recomendacion FROM recomendaciones_semanales WHERE imc = " + imc;
-            MySqlDataReader reader = cmd.ExecuteReader();
-            string s;
-            if (reader.Read())
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                s = reader.GetString(0);
-                cn.close();
-                return s;
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "SELECT recomendacion FROM recomendaciones_semanales WHERE imc = " + imc;
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    //MySqlDataReader reader = cmd.ExecuteReader();
+                    string s;
+                    if (reader.Read())
+                    {
+                        s = reader.GetString(0);
+                        cn.Close();
+                        return s;
+                    }
+                    cn.Close();
+                    return null;
+                }
             }
-            cn.close();
-            return null;
         }
         public string getRecomendacionSemanal()
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            Random rnd = new Random();
-            int rand_id = rnd.Next(3, 23);
-            cmd.CommandText = "SELECT recomendacion FROM recomendaciones_semanales WHERE ID = " + rand_id;
-            MySqlDataReader reader = cmd.ExecuteReader();
-            string s;
-            if (reader.Read())
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                s = reader.GetString(0);
-                cn.close();
-                return s;
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                Random rnd = new Random();
+                int rand_id = rnd.Next(3, 23);
+                cmd.CommandText = "SELECT recomendacion FROM recomendaciones_semanales WHERE ID = " + rand_id;
+                using (var reader = cmd.ExecuteReader())
+                {
+                    //MySqlDataReader reader = cmd.ExecuteReader();
+                    string s;
+                    if (reader.Read())
+                    {
+                        s = reader.GetString(0);
+                        cn.Close();
+                        return s;
+                    }
+                    cn.Close();
+                    return null;
+                }
             }
-            cn.close();
-            return null;
         }
         public void addUsuarioTablaTestsRealizados()
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "INSERT tests_realizados SET email = '" + Utils.user + "'";
-            cmd.ExecuteNonQuery();
-            cn.close();
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
+            {
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "INSERT tests_realizados SET email = '" + Utils.user + "'";
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
         }
         public bool getTestStatus()
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "SELECT test_realizado FROM tests_realizados WHERE email = '" + Utils.user + "'";
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                if (reader.GetInt16(0) == 0)
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "SELECT test_realizado FROM tests_realizados WHERE email = '" + Utils.user + "'";
+                using (var reader = cmd.ExecuteReader())
                 {
-                    cn.close();
-                    return false;
-                } else if (reader.GetInt16(0) == 1)
-                {
-                    cn.close();
-                    return true;
+                    //MySqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        if (reader.GetInt16(0) == 0)
+                        {
+                            cn.Close();
+                            return false;
+                        }
+                        else if (reader.GetInt16(0) == 1)
+                        {
+                            cn.Close();
+                            return true;
+                        }
+                    }
                 }
+                cn.Close();
+                return false;
             }
-            cn.close();
-            return false;
         }
         public List<Recomendacion> getRecomendaciones(string user)
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "SELECT * FROM recomendaciones WHERE email = '" + user + "'";
-            MySqlDataReader reader = cmd.ExecuteReader();
-            List<Recomendacion> recomendaciones = new List<Recomendacion>();
-            while (reader.Read())
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                for (int i = 1; i <= 15; i++)
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM recomendaciones WHERE email = '" + user + "'";
+                using (var reader = cmd.ExecuteReader())
                 {
-                    if (reader.GetString(i) != "0")
+                    //MySqlDataReader reader = cmd.ExecuteReader();
+                    List<Recomendacion> recomendaciones = new List<Recomendacion>();
+                    while (reader.Read())
                     {
-                        recomendaciones.Add(new Recomendacion("", reader.GetString(i)));
-                    } else
-                    {
-                        break;
+                        for (int i = 1; i <= 15; i++)
+                        {
+                            if (reader.GetString(i) != "0")
+                            {
+                                recomendaciones.Add(new Recomendacion("", reader.GetString(i)));
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
                     }
+                    return recomendaciones;
                 }
+
+                cn.Close();
             }
-            cn.close();
-            return recomendaciones;
         }
         public void updtNombreUsuario(string nombreNuevo)
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "UPDATE usuarios SET nombre_usuario = '" + nombreNuevo + "' WHERE email = '" + Utils.user + "'";
-            cmd.ExecuteNonQuery();
-            cn.close();
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
+            {
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "UPDATE usuarios SET nombre_usuario = '" + nombreNuevo + "' WHERE email = '" + Utils.user + "'";
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
         }
         public void updtEdadUsuario(int edadNueva)
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "UPDATE usuarios SET edad_usuario = '" + edadNueva + "' WHERE email = '" + Utils.user + "'";
-            cmd.ExecuteNonQuery();
-            cn.close();
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
+            {
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "UPDATE usuarios SET edad_usuario = '" + edadNueva + "' WHERE email = '" + Utils.user + "'";
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
         }
         public void updtEmailUsuario(string emailNuevo)
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "UPDATE usuarios SET email = '" + emailNuevo + "' WHERE email = '" + Utils.user + "'";
-            cmd.ExecuteNonQuery();
-            cn.close();
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
+            {
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "UPDATE usuarios SET email = '" + emailNuevo + "' WHERE email = '" + Utils.user + "'";
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
+            try
+            {
+                using (var cn2 = new MySqlConnection(Connection.connString))
+                using (var cmd2 = cn2.CreateCommand())
+                {
+                    cn2.Open();
+                    cmd2.CommandText = "UPDATE tests_realizados SET email = '" + emailNuevo + "' WHERE email = '" + Utils.user + "'";
+                    cmd2.ExecuteNonQuery();
+                    cn2.Close();
+                }
+            } catch (Exception e) { }
+            try
+            {
+                using (var cn3 = new MySqlConnection(Connection.connString))
+                using (var cmd3 = cn3.CreateCommand())
+                {
+                    cn3.Open();
+                    cmd3.CommandText = "UPDATE recomendaciones SET email = '" + emailNuevo + "' WHERE email = '" + Utils.user + "'";
+                    cmd3.ExecuteNonQuery();
+                    cn3.Close();
+                }
+            } catch (Exception e) { }
+            try
+            {
+                using (var cn4 = new MySqlConnection(Connection.connString))
+                using (var cmd4 = cn4.CreateCommand())
+                {
+                    cn4.Open();
+                    cmd4.CommandText = "UPDATE ninos_puntajes SET email = '" + emailNuevo + "' WHERE email = '" + Utils.user + "'";
+                    cmd4.ExecuteNonQuery();
+                    cn4.Close();
+                }
+            } catch (Exception e) { }
+            try
+            {
+                using (var cn5 = new MySqlConnection(Connection.connString))
+                using (var cmd5 = cn5.CreateCommand())
+                {
+                    cn5.Open();
+                    cmd5.CommandText = "UPDATE nino_usuario SET email = '" + emailNuevo + "' WHERE email = '" + Utils.user + "'";
+                    cmd5.ExecuteNonQuery();
+                    cn5.Close();
+                }
+            } catch (Exception e) { }
         }
         public void updtPasswordUsuario(string passwordNuevo)
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "UPDATE usuarios SET password = '" + passwordNuevo + "'";
-            cmd.ExecuteNonQuery();
-            cn.close();
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
+            {
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "UPDATE usuarios SET password = '" + passwordNuevo + "' WHERE email = '" + Utils.user + "'";
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
         }
         public string getNombreUsuario(string email)
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "SELECT nombre_usuario FROM usuarios WHERE email = '" + email + "'";
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                string _s = reader.GetString(0);
-                cn.close();
-                return _s;
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "SELECT nombre_usuario FROM usuarios WHERE email = '" + email + "'";
+                using (var reader = cmd.ExecuteReader())
+                {
+                    //MySqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        string _s = reader.GetString(0);
+                        cn.Close();
+                        return _s;
+                    }
+                    cn.Close();
+                    return "";
+                }
             }
-            cn.close();
-            return "";
         }
         public int getEdadUsuario(string email)
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "SELECT edad_usuario FROM usuarios WHERE email = '" + email + "'";
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                int _i = reader.GetInt16(0);
-                cn.close();
-                return _i;
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "SELECT edad_usuario FROM usuarios WHERE email = '" + email + "'";
+                using (var reader = cmd.ExecuteReader())
+                {
+                    //MySqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        int _i = reader.GetInt16(0);
+                        cn.Close();
+                        return _i;
+                    }
+                    cn.Close();
+                    return 0;
+                }
             }
-            cn.close();
-            return 0;
         }
         public string getNombreNino()
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "SELECT nombre FROM nino_usuario WHERE email = '" + Utils.user + "'";
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                string _s = reader.GetString(0);
-                cn.close();
-                return _s;
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "SELECT nombre FROM nino_usuario WHERE email = '" + Utils.user + "'";
+                using (var reader = cmd.ExecuteReader())
+                {
+                    //MySqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        string _s = reader.GetString(0);
+                        cn.Close();
+                        return _s;
+                    }
+                    cn.Close();
+                    return "";
+                }
             }
-            cn.close();
-            return "";
         }
         public int getEdadNino()
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "SELECT edad FROM nino_usuario WHERE email = '" + Utils.user + "'";
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                int _i = reader.GetInt16(0);
-                cn.close();
-                return _i;
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "SELECT edad FROM nino_usuario WHERE email = '" + Utils.user + "'";
+                using (var reader = cmd.ExecuteReader())
+                {
+                    //MySqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        int _i = reader.GetInt16(0);
+                        cn.Close();
+                        return _i;
+                    }
+                    cn.Close();
+                    return 0;
+                }
             }
-            cn.close();
-            return 0;
         }
         public int getAlturaNino()
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "SELECT altura FROM nino_usuario WHERE email = '" + Utils.user + "'";
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                int _i = reader.GetInt16(0);
-                cn.close();
-                return _i;
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "SELECT altura FROM nino_usuario WHERE email = '" + Utils.user + "'";
+                using (var reader = cmd.ExecuteReader())
+                {
+                    //MySqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        int _i = reader.GetInt16(0);
+                        cn.Close();
+                        return _i;
+                    }
+                    cn.Close();
+                    return 0;
+                }
             }
-            cn.close();
-            return 0;
         }
         public int getPesoNino()
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "SELECT peso FROM nino_usuario WHERE email = '" + Utils.user + "'";
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                int _i = reader.GetInt16(0);
-                cn.close();
-                return _i;
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "SELECT peso FROM nino_usuario WHERE email = '" + Utils.user + "'";
+                using (var reader = cmd.ExecuteReader())
+                {
+                    //MySqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        int _i = reader.GetInt16(0);
+                        cn.Close();
+                        return _i;
+                    }
+                    cn.Close();
+                    return 0;
+                }
             }
-            cn.close();
-            return 0;
         }
         public string getSexoNino()
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "SELECT sexo FROM nino_usuario WHERE email = '" + Utils.user + "'";
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                string _s = reader.GetString(0);
-                cn.close();
-                return _s;
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "SELECT sexo FROM nino_usuario WHERE email = '" + Utils.user + "'";
+                using (var reader = cmd.ExecuteReader())
+                {
+                    //MySqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        string _s = reader.GetString(0);
+                        cn.Close();
+                        return _s;
+                    }
+                    cn.Close();
+                    return "";
+                }
             }
-            cn.close();
-            return "";
         }
         public int getIntLM()
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "SELECT lm FROM ninos_puntajes WHERE email = '" + Utils.user + "'";
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                int _i = reader.GetInt16(0);
-                cn.close();
-                return _i;
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "SELECT lm FROM ninos_puntajes WHERE email = '" + Utils.user + "'";
+                using (var reader = cmd.ExecuteReader())
+                {
+                    //MySqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        int _i = reader.GetInt16(0);
+                        cn.Close();
+                        return _i;
+                    }
+                    cn.Close();
+                    return 0;
+                }
             }
-            cn.close();
-            return 0;
         }
         public int getIntES()
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "SELECT es FROM ninos_puntajes WHERE email = '" + Utils.user + "'";
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                int _i = reader.GetInt16(0);
-                cn.close();
-                return _i;
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "SELECT es FROM ninos_puntajes WHERE email = '" + Utils.user + "'";
+                using (var reader = cmd.ExecuteReader())
+                {
+                    //MySqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        int _i = reader.GetInt16(0);
+                        cn.Close();
+                        return _i;
+                    }
+                    cn.Close();
+                    return 0;
+                }
             }
-            cn.close();
-            return 0;
         }
         public int getIntEM()
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "SELECT em FROM ninos_puntajes WHERE email = '" + Utils.user + "'";
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                int _i = reader.GetInt16(0);
-                cn.close();
-                return _i;
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "SELECT em FROM ninos_puntajes WHERE email = '" + Utils.user + "'";
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    //MySqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        int _i = reader.GetInt16(0);
+                        cn.Close();
+                        return _i;
+                    }
+                    cn.Close();
+                    return 0;
+                }
             }
-            cn.close();
-            return 0;
         }
         public bool verificarNinoRegistrado()
         {
-            cn.open();
-            MySqlCommand cmd = cn.CreateCommand();
-            cmd.CommandText = "SELECT email FROM nino_usuario WHERE email = '" + Utils.user + "'";
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
             {
-                if (reader.GetString(0) == null)
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = "SELECT email FROM nino_usuario WHERE email = '" + Utils.user + "'";
+                using (var reader = cmd.ExecuteReader())
                 {
-                    cn.close();
-                    return false;
+                    //MySqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        if (reader.GetString(0) == null)
+                        {
+                            cn.Close();
+                            return false;
+                        }
+                        cn.Close();
+                        return true;
+                    }
                 }
-                cn.close();
-                return true;
+                cn.Close();
+                return false;
             }
-            cn.close();
-            return false;
+        }
+        public void updtFechaInicioCambiarDatos() // añade o cambia
+        {
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
+            {
+                cn.Open();
+                //MySqlCommand cmd = cn.CreateCommand();
+                string todays_date = DateTime.Now.Year + "-" + DateTime.Now.Month + "-" + DateTime.Now.Day;
+                DateTime today = DateTime.Parse(todays_date);
+                DateTime nextWeek = today.AddDays(30);
+                string s = nextWeek.Year + "-" + nextWeek.Month + "-" + nextWeek.Day;
+                cmd.CommandText = "UPDATE usuarios SET recordatorio_cambiar_datos = '" + s + "' WHERE email = '" + Utils.user + "'";
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
+        }
+        public string getFechaRecordatorioCambiarDatos()
+        {
+            using (var cn = new MySqlConnection(Connection.connString))
+            using (var cmd = cn.CreateCommand())
+            {
+                cn.Open();
+                try
+                {
+                    //MySqlCommand cmd = cn.CreateCommand();
+                    cmd.CommandText = "SELECT recordatorio_cambiar_datos FROM usuarios WHERE email = '" + Utils.user + "'";
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        //MySqlDataReader reader = cmd.ExecuteReader();
+                        string s;
+                        if (reader.Read())
+                        {
+                            s = reader.GetString(0);
+                            cn.Close();
+                            return s;
+                        }
+                        cn.Close();
+                        return null;
+                    }
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
         }
     }
 }
